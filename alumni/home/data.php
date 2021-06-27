@@ -3,11 +3,20 @@
 include_once('../_header.php');
 
 $sql_lowongan = mysqli_query($con, "SELECT l.id, l.judul, l.lowongan, l.batasLowongan, l.range_salary, p.namaPerush FROM perusahaan_lowongan AS l JOIN perusahaan AS p ON l.idPerush = p.idPerush WHERE hapus = 0 ORDER BY id DESC") or die (mysqli_error($con));
+
+if ( isset($_POST['search']) ) {
+  $keyword = $_POST['keyword'];
+  $sql_lowongan = mysqli_query($con, "SELECT l.id, l.judul, l.lowongan, l.batasLowongan, l.range_salary, p.namaPerush FROM perusahaan_lowongan AS l JOIN perusahaan AS p ON l.idPerush = p.idPerush WHERE hapus = 0 AND l.judul LIKE '%$keyword%' ORDER BY id DESC") or die (mysqli_error($con));
+}
+
 ?>
 
 <h1>Daftar Lowongan</h1>
+<form action="" method="post">
+  <input type="text" name="keyword" placeholder="Cari lowongan">
+  <button type="submit" name="search" id="searchButton">Cari</button>
+</form>
 
-<input type="text" name="search" >
 
 <?php while($data = mysqli_fetch_assoc($sql_lowongan)) {?>
 
