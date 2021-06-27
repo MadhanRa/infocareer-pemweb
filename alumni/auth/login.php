@@ -1,7 +1,7 @@
 <?php
 require_once "../_config/config.php";
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['nim'])) {
   echo "<script>window.location = '".base_url()."';</script>";
 } else {
 
@@ -17,7 +17,7 @@ if (isset($_SESSION['user'])) {
       
       // Cek password
       $row = mysqli_fetch_assoc($sql_login);
-      if ($password === $row) {
+      if ($password === $row['passwordAlumni']) {
         $_SESSION['nim'] = $nim;
         echo "<script>window.location='".base_url()."';</script>";
       }
@@ -44,19 +44,19 @@ if (isset($_SESSION['user'])) {
   <?php if( isset($error) ) : ?>
     <p style="color:red; font-style: italic;">NIM/password salah</p>
   <?php endif; ?>
-  <form method="post" action="">
+  <form method="post" action="" autocomplete="off">
     <label for="nim">NIM</label><br>
-    <input type="text" id="nim" name="nim"><br>
+    <input type="text" id="nim" name="nim" required><br>
 
     <label for="password">Pasword</label><br>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password" required>
 
     <button type="submit" name="login">Login</button>
 
   </form>
 
 
-  <a href="">Belum punya akun? daftar dulu disini!</a>
+  <a href="<?= base_url('auth/register.php')?>">Belum punya akun? daftar dulu disini!</a>
 
   
   <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>

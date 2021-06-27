@@ -40,6 +40,7 @@ foreach ($requirements as $syarat){?>
 
 
 <form action="proses.php" method="post">
+<input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
 <input type="hidden" name="idLowongan" value="<?= $idLowongan ?>">
 <input type="hidden" name="idPerush" value="<?= $idPerush ?>">
 <button type="submit" name="daftar">Daftar</button>

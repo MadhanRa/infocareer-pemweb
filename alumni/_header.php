@@ -2,9 +2,13 @@
 
 require_once "_config/config.php";
 
-// if (!isset($_SESSION['nim'])) {
-//   echo "<script>window.location='" .base_url('auth/login.php') ."';</script>";
-// }?>
+if (!isset($_SESSION['nim'])) {
+  echo "<script>window.location='" .base_url('auth') ."';</script>";
+}
+$nim = $_SESSION["nim"];
+$sql_alumni = mysqli_query($con, "SELECT * FROM alumni WHERE nim = $nim") or die(mysqli_error($con));
+$data = mysqli_fetch_assoc($sql_alumni);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,8 +31,8 @@ require_once "_config/config.php";
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(<?= base_url('_assets/images/bg_1.jpg') ?>);">
 	  			<div class="user-logo">
-	  				<div class="img" style="background-image: url(<?= base_url('_assets/images/logo.jpg') ?>);"></div>
-	  				<h3>Catriona Henderson</h3>
+	  				<div class="img" style="background-image: url(<?= base_url('_assets/images/'.$data['photo']) ?>);"></div>
+	  				<h3><?= $data['nama'] ?></h3>
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">
@@ -42,7 +46,7 @@ require_once "_config/config.php";
               <a href="<?=base_url('antrean')?>"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Antrean</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            <a href="<?=base_url('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
           </li>
         </ul>
 
