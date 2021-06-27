@@ -75,7 +75,7 @@ if (isset($_POST['register'])) {
       echo "<script>window.location='".base_url('auth/register.php')."';</script>";
     } else {
       $query = "INSERT INTO alumni VALUES 
-      ('$nim', '$nama', '$jenkel', '$tmpLahir', '$tglLahir', '$alamat_skrg', '$hp_skrg', '$email', '$wn', '$no_id', '$npwp', '$statusMarital', '$ipk', '$photo', '$kompetensi', '$password', 1, '$tentangAlumni')";
+      ('$nim', '$nama', '$jenkel', '$tmpLahir', '$tglLahir', '$alamat_skrg', '$hp_skrg', '$email', '$wn', '$no_id', '$npwp', '$statusMarital', '$ipk', '$photo', '$kompetensi', '$password', 0, '$tentangAlumni')";
       mysqli_query($con, $query) or die(mysqli_error($con));
   
       echo "<script>alert('Data berhasil ditambah');</script>";

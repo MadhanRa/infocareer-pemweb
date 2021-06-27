@@ -2,7 +2,7 @@
 
 include_once('../_header.php');
 $nim = $_SESSION['nim'];
-$sql_lowongan = mysqli_query($con, "SELECT a.idApp, l.judul, l.batasLowongan,  a.tgl_apply, a.confirm, a.accept, a.tgl_confirm, a.tgl_accept, p.namaPerush FROM application AS a INNER JOIN perusahaan_lowongan AS l ON a.idLowongan = l.idLowongan AND a.idPerush = l.idPerush INNER JOIN perusahaan AS p ON a.idPerush = p.idPerush WHERE nim = $nim") or die (mysqli_error($con));
+$sql_lowongan = mysqli_query($con, "SELECT a.idApp, l.judul, l.batasLowongan,  a.tgl_apply, a.confirm, a.accept, a.tgl_confirm, a.tgl_accept, p.namaPerush FROM application AS a INNER JOIN perusahaan_lowongan AS l ON a.idLowongan = l.idLowongan AND a.idPerush = l.idPerush INNER JOIN perusahaan AS p ON a.idPerush = p.idPerush WHERE nim = $nim ORDER BY a.idApp DESC") or die (mysqli_error($con));
 ?>
 
 <h1>Konfirmasi Lowongan</h1>

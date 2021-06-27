@@ -1,14 +1,13 @@
 <?php 
 include_once('../_header.php'); 
 
-$idLowongan = @$_GET['idLowongan'];
-$idPerush = @$_GET['idPerush'];
-$sql_detail_lowongan = mysqli_query($con, "SELECT l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, p.namaPerush, p.alamatPerush, p.tentangPerush, p.emailPerush, p.telpFaxPerush, p.telpCp, p.namaCp, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
+$id = @$_GET['id'];
+$sql_detail_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.idPerush, l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, p.namaPerush, p.alamatPerush, p.tentangPerush, p.emailPerush, p.telpFaxPerush, p.telpCp, p.namaCp, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
 FROM perusahaan_lowongan AS l 
 INNER JOIN perusahaan AS p ON l.idPerush = p.idPerush 
 INNER JOIN perusahaan_lowongan_syarat ON p.idPerush = perusahaan_lowongan_syarat.idPerush AND l.idLowongan = perusahaan_lowongan_syarat.idLowongan
 INNER JOIN syarat_lamar AS s ON perusahaan_lowongan_syarat.idSyarat = s.id 
-WHERE l.idLowongan = $idLowongan AND p.idPerush = $idPerush") or die(mysqli_error($con));
+WHERE l.id = $id") or die(mysqli_error($con));
 
 $data = mysqli_fetch_assoc($sql_detail_lowongan);
 $requirements = explode(";", $data['requirements']);
@@ -41,8 +40,8 @@ foreach ($requirements as $syarat){?>
 
 <form action="proses.php" method="post">
 <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
-<input type="hidden" name="idLowongan" value="<?= $idLowongan ?>">
-<input type="hidden" name="idPerush" value="<?= $idPerush ?>">
+<input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
+<input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
 <button type="submit" name="daftar">Daftar</button>
 </form>
 
