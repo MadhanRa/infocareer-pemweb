@@ -68,7 +68,7 @@ if (isset($_SESSION['nim'])) {
     <input type="radio" id="kawin" name="statusMarital" value="Kawin">
     <label for="kawin">Kawin</label><br>
     <input type="radio" id="belumKawin" name="statusMarital" value="Belum Kawin">
-    <label for="belumKawin">Belum Menikah</label><br>
+    <label for="belumKawin">Belum Kawin</label><br>
 
     <label for="ipk">IPK</label><br>
     <input type="number" id="ipk" name="ipk" min="2.1" max="4.0" step="0.1" required><br>

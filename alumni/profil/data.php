@@ -29,4 +29,7 @@ $data = mysqli_fetch_assoc($sql_alumni);
 <h5>Nilai Akademik</h5>
 <p>IPK : <?= $data['ipk'] ?></p>
 
+<h5>Tentang Alumni</h5>
+<p><?= $data['tentangAlumni'] ?></p>
+<a href="<?=base_url('profil/edit.php')?>">Edit Profil</a>
 <?php include_once('../_footer.php'); ?>
