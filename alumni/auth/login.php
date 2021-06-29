@@ -54,7 +54,8 @@ if (isset($_SESSION['nim'])) {
     position: absolute;
     width: 336px;
     height: 46px;
-    top: 300px;
+    right: -100px;
+    top: 170px;
     background: #DE83FD;
     border-radius: 20px;
     }
@@ -66,7 +67,7 @@ if (isset($_SESSION['nim'])) {
     }
     .text-buat{
     position: absolute;
-    right: 200px;
+    right: 235px;
     bottom: 245px;
     color: white;
     }
