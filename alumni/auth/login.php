@@ -54,15 +54,24 @@ if (isset($_SESSION['nim'])) {
     position: absolute;
     width: 336px;
     height: 46px;
-    right: 162px;
+    right: 200px;
     top: 402px;
     background: #DE83FD;
     border-radius: 20px;
     }
     .form-masuk{
     position: absolute;
-    right: 143px;
+    left: 1015px;
     top: 228px;
+    line-height: 20px;
+    }
+    .text-buat{
+    position: absolute;
+    left: 1035px;
+    bottom: 245px;
+    }
+    .form-color{
+      color: #E5E5E5;
     }
     .text-welcome{
     position: absolute;
@@ -105,28 +114,27 @@ if (isset($_SESSION['nim'])) {
   <img src="../_assets/images/laptop-icon-bglogin.png" class="img-gambar">
   <p class="text-welcome2">Selamat datang kembali di website pencarian kerja, pemuda harapan bangsa harus banyak berkarya untuk kemajuan negara.</p>
   
-
-
-  
-  <!-- <#?php if( isset($error) ) : ?>
+ 
+  <?php if( isset($error) ) : ?>
     <p style="color:red; font-style: italic;">NIM/password salah</p>
-  <#?php endif; ?>
+  <?php endif; ?>
   <form method="post" action="" autocomplete="off" class="form-masuk">
     <div class="form-group row">
       <div class="col-xs-3">
-        <label for="nim">NIM</label>
+        <label class="form-color" for="nim">NIM</label>
         <input type="text" class="form-control" id="nim" aria-describedby="emailHelp" placeholder="Enter email name="nim" required">
       </div>
     </div>
     <div class="form-group row">
       <div class="col-xs-3">
-        <label for="password">Password</label>
+        <label class="form-color for="password">Password</label>
         <input type="password" class="form-control" id="password" placeholder="Password">
       </div>
     </div> 
-    <button type="submit" class="btn btn-primary" href="<#?= base_url('auth/register.php') ?>" name="login">Masuk</button>
-    <a href="<#?= base_url('auth/register.php')?>">Belum punya akun? daftar dulu disini!</a>
-  </form>-->
+  </form>
+  
+  <a class="btn btn-masuk text-center" type="submit" href="<?= base_url('auth/register.php') ?>" name="login" role="button">Masuk</a>
+  <a class="text-buat" href="<?= base_url('auth/register.php')?>">Belum punya akun? daftar dulu disini!</a>
 
 
   
