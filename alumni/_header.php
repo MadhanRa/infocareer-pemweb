@@ -20,9 +20,30 @@ $data = mysqli_fetch_assoc($sql_alumni);
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
+    <style>
+    .img-in{
+    position: absolute;
+    right: 180px;
+    bottom: 37.98px;
+    }
+    .img-ig{
+    position: absolute;
+    right: 140px;
+    bottom: 37.98px;
+    }
+    .img-fb{
+    position: absolute;
+    right: 110px;
+    bottom: 37.98px;
+    }
+    nav#sidebar{
+      background-color: #9900CC;
+    }
+    </style>
+
   </head>
   <body>
-		
+		<!-- WARNA belum bisa full ungu??? -->
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
 				<div class="custom-menu">
@@ -49,7 +70,9 @@ $data = mysqli_fetch_assoc($sql_alumni);
             <a href="<?=base_url('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
           </li>
         </ul>
-
+        <img src="<?=base_url('_assets/images/in.png')?>" class="img-in">
+        <img src="<?=base_url('_assets/images/ig.png')?>" class="img-ig">
+        <img src="<?=base_url('_assets/images/fb.png')?>" class="img-fb">`
     	</nav>
 
         <!-- Page Content  -->
