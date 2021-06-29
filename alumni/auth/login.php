@@ -121,7 +121,7 @@ if (isset($_SESSION['nim'])) {
     <div class="form-group row">
       <div class="col-xs-3">
         <label class="form-color" for="nim">NIM</label>
-        <input type="text" class="form-control" id="nim" placeholder="Enter NIM" name="nim" required">
+        <input type="text" class="form-control" id="nim" placeholder="Enter NIM" name="nim" required>
       </div>
     </div>
     <div class="form-group row">

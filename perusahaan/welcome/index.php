@@ -133,7 +133,7 @@ require_once "../_config/config.php";
 
     
     
-    <h1 class="ayo-kerjo">Ayo Kerjo</h1>
+    <h1 class="ayo-kerjo">Buka Lowongan</h1>
     <p class="dengkul">Dengkulku Modalku,</p>
     <p class="today">Today Melarat Tomorrow Konglomerat.</p>
     <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos velit veniam impedit excepturi mollitia cupiditate beatae perspiciatis officiis veritatis aut sequi ipsa, provident, consequatur dolore itaque, quibusdam repellendus necessitatibus libero!</p>

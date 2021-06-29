@@ -14,7 +14,7 @@ if (mysqli_connect_errno()) {
 
 // Fungsi base urls
 function base_url($url = null) {
-  $base_url = "http://localhost/infocareer/alumni";
+  $base_url = "http://localhost/infocareer/perusahaan";
 
   if ($url != null) {
     return $base_url. "/" .$url;
