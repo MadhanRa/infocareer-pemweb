@@ -132,7 +132,6 @@ require_once "../_config/config.php";
     <a class="btn btn-daftar text-light" href="<?= base_url('auth/register.php') ?>" role="button">Daftar</a>
 
     
-    
     <h1 class="ayo-kerjo">Ayo Kerjo</h1>
     <p class="dengkul">Dengkulku Modalku,</p>
     <p class="today">Today Melarat Tomorrow Konglomerat.</p>
