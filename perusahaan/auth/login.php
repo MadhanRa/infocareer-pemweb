@@ -1,7 +1,7 @@
 <?php
 require_once "../_config/config.php";
 
-if (isset($_SESSION['idPerush'])) {
+if (isset($_SESSION['emailPerush'])) {
   echo "<script>window.location = '".base_url()."';</script>";
 } else {
 
@@ -18,7 +18,7 @@ if (isset($_SESSION['idPerush'])) {
       // Cek password
       $row = mysqli_fetch_assoc($sql_login);
       if ($password === $row['passwordPerush']) {
-        $_SESSION['idPerush'] = $row['idPerush'];
+        $_SESSION['emailPerush'] = $row['emailPerush'];
         echo "<script>window.location='".base_url()."';</script>";
       }
     }

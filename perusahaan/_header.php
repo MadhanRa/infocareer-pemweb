@@ -2,12 +2,12 @@
 
 require_once "_config/config.php";
 
-if (!isset($_SESSION['nim'])) {
+if (!isset($_SESSION['emailPerush'])) {
   echo "<script>window.location='" .base_url('auth') ."';</script>";
 }
-$nim = $_SESSION["nim"];
-$sql_alumni = mysqli_query($con, "SELECT * FROM alumni WHERE nim = $nim") or die(mysqli_error($con));
-$data = mysqli_fetch_assoc($sql_alumni);
+$email = $_SESSION["emailPerush"];
+$sql_perusahaan = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = $email") or die(mysqli_error($con));
+$data = mysqli_fetch_assoc($sql_perusahaan);
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,8 +31,7 @@ $data = mysqli_fetch_assoc($sql_alumni);
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(<?= base_url('_assets/images/bg_1.jpg') ?>);">
 	  			<div class="user-logo">
-	  				<div class="img" style="background-image: url(<?= base_url('_assets/images/'.$data['photo']) ?>);"></div>
-	  				<h3><?= $data['nama'] ?></h3>
+	  				<h3><?= $data['namaPerush'] ?></h3>
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">

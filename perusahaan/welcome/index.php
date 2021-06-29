@@ -48,14 +48,14 @@ require_once "../_config/config.php";
     .ayo-kerjo{
       /* Ayo Kerjo */
     position: absolute;
-    width: 366px;
+    width: auto;
     height: 85px;
     left: 53px;
     top: 225px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 50px;
     line-height: 85px;
     color: #FFFFFF;
     }
