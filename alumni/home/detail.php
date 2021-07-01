@@ -1,3 +1,9 @@
+<style>
+.body{
+ background:  #E5E5E5;
+}
+
+</style>
 <?php 
 include_once('../_header.php'); 
 
