@@ -51,7 +51,6 @@ if (isset($_SESSION['emailPerush'])) {
     height: 46px;
     background: #DE83FD;
     border-radius: 20px;
-    margin-top: 20px;
     }
     .text-welcome{
     font-style: normal;
@@ -71,6 +70,7 @@ if (isset($_SESSION['emailPerush'])) {
 
     text-align: justify;
     color: #666666;
+    margin-top: 1.2rem;
     }
 
   </style>
@@ -105,8 +105,10 @@ if (isset($_SESSION['emailPerush'])) {
                 <small class="form-text text-white" style="font-style:italic;">email/password salah</small>
                 <?php endif; ?>
             </div> 
-            <a class="text-white" href="<?= base_url('auth/register.php')?>">Belum punya akun? daftar dulu disini!</a><br>
-            <button class="btn btn-masuk" type="submit" name="login" role="button">Masuk</button>
+            <div class="form-group">
+              <button class="btn btn-masuk" type="submit" name="login" role="button">Masuk</button>
+            </div>
+            <p class="text-white mt-3">Belum punya akun? daftar dulu <b><a class="text-white" href="<?= base_url('auth/register.php')?>">disini!</a></b></p>
           </form>
         </div>
     </div>
