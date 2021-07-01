@@ -15,45 +15,61 @@ if (isset($_SESSION['emailPerush'])) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
   <title>Daftar Infocareer - Perusahaan</title>
+  <style>
+  .form-control {
+    border : 1px solid grey;
+  }
+  </style>
 </head>
 <body>
 
-  <h1>Daftar Infocareer - Perusahaan</h1>
-  <form action="proses.php" id="registForm" method="post" enctype="multipart/form-data" autocomplete="off">
-    <label for="namaPerush">Nama Perusahaan</label><br>
-    <input type="text" id="namaPerush" name="namaPerush" required><br>
-
-    <label for="emailPerush">Email</label><br>
-    <input type="email" id="emailPerush" name="emailPerush" required><br>
-
-    <label for="passwordPerush">Pasword</label><br>
-    <input type="password" id="passwordPerush" name="passwordPerush" required><br>
-
-    <label for="confirmpassword">Konfirmasi Pasword</label><br>
-    <input type="password" id="confirmpassword" name="confirmpassword" required><br>
-    </div>
-      <div class="registrationFormAlert" id="divCheckPasswordMatch">
-    </div>
-    <label for="namaCp">Nama Cp</label><br>
-    <input type="text" id="namaCp" name="namaCp" required><br>
-
-    <label for="telpCp">Telp Cp</label><br>
-    <input type="text" id="telpCp" name="telpCp" required><br>
-
-    <label for="produk">Produk</label><br>
-    <input type="text" id="produk" name="produk" required><br>
-
-    <label for="alamatPerush">Alamat Perusahaan</label><br>
-    <input type="text" id="alamatPerush" name="alamatPerush" required><br>
-
-    <label for="telpFaxPerush">Telp/fax Perush</label><br>
-    <input type="text" id="telpFaxPerush" name="telpFaxPerush" required><br>
-
-    <label for="tentangPerush">Tentang Peusahaan</label><br>
-    <textarea name="tentangPerush" id="tentangPerush" cols="30" rows="5" required></textarea><br>
-    
-    <button type="submit" name="register" id="registerButton">Daftar</button>
-  </form>
+  <div class="container my-5">
+    <h1>Daftar Infocareer - Perusahaan</h1>
+    <form action="proses.php" id="registForm" method="post" autocomplete="off">
+      <div class="form-group">
+        <label for="namaPerush">Nama Perusahaan</label>
+        <input type="text" id="namaPerush" name="namaPerush" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="emailPerush">Email</label>
+        <input type="email" id="emailPerush" name="emailPerush" class="form-control" required>
+      </div>
+      <div class="form-group">   
+        <label for="passwordPerush">Password</label>
+        <input type="password" id="passwordPerush" name="passwordPerush" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmpassword">Konfirmasi Pasword</label>
+        <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" required>
+        <small class="registrationFormAlert form-text text-muted" id="divCheckPasswordMatch"></small>
+      </div>
+      <div class="form-group">
+        <label for="namaCp">Nama Cp</label>
+        <input type="text" id="namaCp" name="namaCp" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="telpCp">Telp Cp</label>
+        <input type="text" id="telpCp" name="telpCp" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="produk">Produk</label>
+        <input type="text" id="produk" name="produk" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="alamatPerush">Alamat Perusahaan</label>
+        <input type="text" id="alamatPerush" name="alamatPerush" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="telpFaxPerush">Telp/fax Perush</label>
+        <input type="text" id="telpFaxPerush" name="telpFaxPerush" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="tentangPerush">Tentang Perusahaan</label>
+        <textarea name="tentangPerush" id="tentangPerush" rows="5" class="form-control" required></textarea>
+      </div>
+      <button type="submit" name="register" id="registerButton" class="btn btn-primary">Daftar</button>
+    </form>
+  </div>
 
   <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>
   <script src="<?= base_url('_assets/js/popper.js') ?>"></script>

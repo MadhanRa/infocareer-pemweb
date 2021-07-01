@@ -1,6 +1,9 @@
-</div>
+        
+      <footer>
+        <p class="text-center">Copyright 2021</p>
+      </footer>
+      </div>
 		</div>
-
     <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>
     <script src="<?= base_url('_assets/js/popper.js') ?>"></script>
     <script src="<?= base_url('_assets/js/bootstrap.min.js') ?>"></script>

@@ -6,7 +6,7 @@ if (!isset($_SESSION['emailPerush'])) {
   echo "<script>window.location='" .base_url('auth') ."';</script>";
 }
 $email = $_SESSION["emailPerush"];
-$sql_perusahaan = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = $email") or die(mysqli_error($con));
+$sql_perusahaan = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = '$email'") or die(mysqli_error($con));
 $data = mysqli_fetch_assoc($sql_perusahaan);
 ?>
 <!doctype html>
@@ -20,7 +20,39 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   </head>
+  <style>
+  #sidebar {
+    background: #9900CC;
+  }
+  
+  .card h5 {
+    font-size: 12px;
+  }
+
+  .card p {
+    font-size: 9px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card a {
+    font-size: 9px;
+    background: #C4C4C4;
+    border-radius: 7px;
+    padding: 2px 12px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .card-body {
+    padding: 6px 12px;
+    margin-left: 12px;
+  }
+  </style>
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
@@ -39,10 +71,10 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
             <a href="<?=base_url('home')?>"><span class="fa fa-home mr-3"></span> Home</a>
           </li>
           <li>
-            <a href="<?=base_url('profil')?>"><span class="fa fa-gift mr-3"></span> Profil</a>
+            <a href="<?=base_url('profil')?>"><span class="fa fa-user mr-3"></span> Profil</a>
           </li>
           <li>
-              <a href="<?=base_url('antrean')?>"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Antrean</a>
+              <a href="<?=base_url('antrean')?>"><span class="fa fa-suitcase mr-3"></span> Antrean</a>
           </li>
           <li>
             <a href="<?=base_url('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>

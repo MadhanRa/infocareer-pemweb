@@ -1,8 +1,8 @@
 <?php 
 include_once('../_header.php');
 
-$nim = $_SESSION['nim'];
-$sql_alumni = mysqli_query($con, "SELECT * FROM alumni WHERE nim = $nim") or die(mysqli_error($con));
+$nim = $_SESSION['emailPerush'];
+$sql_alumni = mysqli_query($con, "SELECT * FROM perusahaan WHERE nim = $nim") or die(mysqli_error($con));
 $data = mysqli_fetch_assoc($sql_alumni);
 
 ?>

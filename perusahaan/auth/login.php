@@ -10,9 +10,9 @@ if (isset($_SESSION['emailPerush'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql_login = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = $email");
+    $sql_login = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = '$email'");
 
-    // Cek nim
+    // Cek email
     if (mysqli_num_rows($sql_login) === 1) {
       
       // Cek password

@@ -2,5 +2,5 @@
 
 require_once "../_config/config.php";
 
-unset($_SESSION['nim']);
+unset($_SESSION['emailPerush']);
 echo "<script>window.location = '".base_url('welcome')."';</script>";
