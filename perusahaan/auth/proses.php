@@ -3,7 +3,7 @@ require_once "../_config/config.php";
 
 if (isset($_POST['register'])) {
   $email = trim(mysqli_real_escape_string($con , $_POST['emailPerush']));
-  $password = trim(mysqli_real_escape_string($con , $_POST['passwordPerush']));
+  $password = trim(mysqli_real_escape_string($con , $_POST['password']));
   $nama = trim(mysqli_real_escape_string($con , $_POST['namaPerush']));
   $namaCp = trim(mysqli_real_escape_string($con , $_POST['namaCp']));
   $telpCp = trim(mysqli_real_escape_string($con , $_POST['telpCp']));

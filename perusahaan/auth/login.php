@@ -36,51 +36,24 @@ if (isset($_SESSION['emailPerush'])) {
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <!-- CSS GAN!!! -->
   <style>
     body {
     background: url("<?=base_url('_assets/images/bg-login.png')?>") no-repeat center center fixed;
     background-size: cover;
     }
-    .img-gambar{
-    position: absolute;
-    left: 12.27%;
-    right: 61.87%;
-    top: 34.44%;
-    bottom: 37.78%;
+    @media (min-width: 768px) {
+    .h-md-100 { height: 100vh; }
     }
     .btn-masuk{
-    position: absolute;
     width: 336px;
     height: 46px;
-    top: 300px;
     background: #DE83FD;
     border-radius: 20px;
-    }
-    .form-masuk{
-    position: absolute;
-    right: 300px;
-    top: 228px;
-    line-height: 20px;
-    }
-    .text-buat{
-    position: absolute;
-    right: 200px;
-    bottom: 245px;
-    color: white;
-    }
-    .form-color{
-      color: #E5E5E5;
+    margin-top: 20px;
     }
     .text-welcome{
-    position: absolute;
-    left: 13.12%;
-    right: 62.73%;
-    top: 29.58%;
-    bottom: 67.64%;
-
-    font-family: Montserrat;
     font-style: normal;
     font-weight: 800;
     font-size: 36px;
@@ -90,13 +63,7 @@ if (isset($_SESSION['emailPerush'])) {
     color: #9900CC;
     }
     .text-welcome2{
-    position: absolute;
-    left: 13.28%;
-    right: 61.88%;
-    top: 63.75%;
-    bottom: 29.44%;
-
-    font-family: Montserrat;
+    max-width: 400px;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -110,35 +77,42 @@ if (isset($_SESSION['emailPerush'])) {
   <title>Login - Infocareer Perusahaan</title>
 </head>
 <body>
-  <p class="text-welcome">Selamat Datang</p>
-  <img src="../_assets/images/laptop-icon-bglogin.png" class="img-gambar">
-  <p class="text-welcome2">Selamat datang kembali di website infocareer,  tempat untuk mencari pekerja.</p>
- 
-  <?php if( isset($error) ) : ?>
-    <p style="color:red; font-style: italic;">email/password salah</p>
-  <?php endif; ?>
-  <form method="post" action="" autocomplete="off" class="form-masuk">
-    <div class="form-group row">
-      <div class="col-xs-3">
-        <label class="form-color" for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-xs-3">
-        <label class="form-color" for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-      </div>
-    </div> 
-    <div class="col-xs-3">
-    <button class="btn btn-masuk text-center" type="submit" name="login" role="button">Masuk</button>
-    </div>
-  </form>
-  
-  <a class="text-buat" href="<?= base_url('auth/register.php')?>">Belum punya akun? daftar dulu disini!</a>
+  <div class="d-md-flex h-md-100 align-items-center">
 
+    <!-- First Half -->
+    <div class="col-md-6 p-0 h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+              <p class="text-welcome">Selamat Datang</p>
+              <img src="../_assets/images/laptop-icon-bglogin.png" class="img-gambar">
+              <p class="text-welcome2">Selamat datang kembali di website infocareer,  tempat untuk mencari pekerja.</p>
+            </div>
+        </div>
+    </div>
 
-  
+    <!-- Second Half -->
+    <div class="col-md-6 p-0 h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+          <form method="post" action="" autocomplete="off">
+            <div class="form-group">
+                <label class="text-white" for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label class="text-white" for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                <?php if( isset($error) ) : ?>
+                <small class="form-text text-white" style="font-style:italic;">email/password salah</small>
+                <?php endif; ?>
+            </div> 
+            <a class="text-white" href="<?= base_url('auth/register.php')?>">Belum punya akun? daftar dulu disini!</a><br>
+            <button class="btn btn-masuk" type="submit" name="login" role="button">Masuk</button>
+          </form>
+        </div>
+    </div>
+        
+</div>
+   
   <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>
   <script src="<?= base_url('_assets/js/popper.js') ?>"></script>
   <script src="<?= base_url('_assets/js/bootstrap.min.js') ?>"></script>
