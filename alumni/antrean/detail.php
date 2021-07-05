@@ -14,48 +14,36 @@ WHERE a.idApp = $idApp") or die(mysqli_error($con));
 $data = mysqli_fetch_assoc($sql_detail_lowongan);
 $requirements = explode(";", $data['requirements']);
 ?>
+<div class="row">
+  <div class="col-md-auto">
+    <!-- Logo Perusahaan -->
+    <img src="<?=base_url('_assets/images/placeholder_lowongan_big.png')?>">
+  </div>
+  <div class="col-sm m-text">
+    <!-- Judul Lowongan -->
+    <h3><?= $data['judul'] ?></h3>
+    <h6><?= $data['namaPerush'] ?></h6>
+    <!-- Info Lowongan -->
+    <p>Dibuka sejak <?= conv_date($data['tglMasuk']) ?></p>
+    <p>Batas Lowongan <?= conv_date($data['batasLowongan']) ?></p>
+    <p>Dibutuhkan <?= $data['lowongan'] ?> orang</p>
+    <!-- Surat Undangan -->
+  </div>
+  <div class="col-md m-text">
+    <h5>Status Pendaftar</h5>
+    <p>Tanggal mendaftar <?= conv_date($data['tgl_apply']) ?> </p>
+    <p>Status Konfirmasi</p>
+    <p><?= $data['confirm'] == 0 ? "Menunggu Konfirmasi" : "Telah Dikonfirmasi sejak ".conv_date($data['tgl_confirm']) ?></p>
+    <p>Status Terima</p>
+    <p><?= $data['accept'] == 0 ? "Belum diterima" : "Diterima sejak ".conv_date($data['tgl_accept']) ?></p>
+  </div>
+</div>
 
-<h1>Detail Lowongan</h1>
-<h3><?= $data['judul'] ?></h3>
-
-<p>Dibuka sejak <?= conv_date($data['tglMasuk']) ?></p>
-
-<p>Batas Lowongan <?= conv_date($data['batasLowongan']) ?></p>
-
-<p>Dibutuhkan <?= $data['lowongan'] ?> orang</p>
-
-<h5>Deskripsi</h5>
-<p><?= $data['deskripsi'] ?></p>
-
-<h5>Syarat-syarat</h5>
-<ul>
-<?php 
-foreach ($requirements as $syarat){?>
-<li><?= $syarat ?></li>
-<?php
-}
-?>
-</ul>
-<h5>Pesan ke pelamar</h5>
-<p><?= $data['pesan_ke_pelamar'] ?></p>
-
-<h5>Status Pendaftar</h5>
-<p>Tanggal mendaftar <?= conv_date($data['tgl_apply']) ?> </p>
-<p>Status Konfirmasi</p>
-<p><?= $data['confirm'] == 0 ? "Menunggu Konfirmasi" : "Telah Dikonfirmasi sejak ".conv_date($data['tgl_confirm']) ?></p>
-<p>Status Terima</p>
-<p><?= $data['accept'] == 0 ? "Belum diterima" : "Diterima sejak ".conv_date($data['tgl_accept']) ?></p>
-
-<h4>Tentang Perusahaan</h4>
-<h6><?= $data['namaPerush'] ?></h6>
-<p>Alamat</p>
-<p><?= $data['alamatPerush'] ?></p>
-<p>Tentang Perusahaan</p>
-<p><?= $data['tentangPerush'] ?></p>
-<p>Kontak Perusahaan</p>
-<p>Email: <?= $data['emailPerush'] ?></p>
-<p>Telp/Fax: <?= $data['telpFaxPerush'] ?> </p>
-<p>CP: <?= $data['telpCp'] ?> (<?= $data['namaCp'] ?>)</p>
+<!-- Pesan Untuk pelamaar -->
+<div class="m-text">
+  <h5>Pesan ke pelamar</h5>
+  <p><?= $data['pesan_ke_pelamar'] ?></p>
+</div>
 
 
 <?php include_once('../_footer.php'); ?>
