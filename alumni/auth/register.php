@@ -34,7 +34,7 @@ if (isset($_SESSION['nim'])) {
         <div class="signup-content">
           <form action="proses.php" id="signup-form" method="post" enctype="multipart/form-data" autocomplete="off" class="signup-form">
           <h2 class="form-title">Daftar Infocareer - Alumni</h2>
-            <div class="form-row">
+            <div class="form-row form-group">
               <div class="col">
                 <label for="nim">NIM</label>
                 <input type="text" id="nim" name="nim" class="form-input" placeholder="Masukkan NIM" required>
@@ -72,7 +72,7 @@ if (isset($_SESSION['nim'])) {
                 </div>
               </div>
             </fieldset>
-            <div class="form-row">
+            <div class="form-row form-group">
               <div class="col">
                 <label for="tmpLahir">Tempat Lahir</label>
                 <input type="text" id="tmpLahir" name="tmpLahir" class="form-input" placeholder="Tempat Lahir" required>

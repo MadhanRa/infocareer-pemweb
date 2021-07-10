@@ -1,7 +1,7 @@
 <?php 
-require_once "../_config/config.php";
+require_once "../../_config/config.php";
 if (isset($_SESSION['emailPerush'])) {
-  echo "<script>window.location = '".base_url()."';</script>";
+  echo "<script>window.location = '".base_url_perus()."';</script>";
 } else {
 ?>
 <!DOCTYPE html>
@@ -12,12 +12,12 @@ if (isset($_SESSION['emailPerush'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?= base_url('_assets/fonts/material-icon/css/material-design-iconic-font.min.css') ?>">
-  <link rel="stylesheet" href="<?= base_url('_assets/css/registration.css') ?>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?= base_url_fonts('material-icon/css/material-design-iconic-font.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url_css('registration.css') ?>">
   <title>Daftar Infocareer - Perusahaan</title>
-  <style>    
+  <style>
     .form-title {
       color: #7f05a8;
       font-size: 26px;
@@ -33,7 +33,7 @@ if (isset($_SESSION['emailPerush'])) {
         <!-- <img src="images/signup-bg.jpg" alt=""> -->
         <div class="container">
             <div class="signup-content">
-                <form method="POST" id="signup-form" class="signup-form" action="proses.php">
+                <form method="POST" id="signup-form" class="signup-form" enctype="multipart/form-data" autocomplete="off" action="proses.php">
                     <h2 class="form-title">Daftar Perusahaan</h2>
                     <div class="form-group">
                         <label for="namaPerush">Nama Perusahaan</label>
@@ -53,7 +53,7 @@ if (isset($_SESSION['emailPerush'])) {
                       <input type="password" id="confirmpassword" name="confirmpassword" class="form-input" placeholder="Konfirmasi Password" required>
                       <small class="registrationFormAlert form-text text-muted" id="divCheckPasswordMatch"></small>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row form-group">
                       <div class="col">
                         <label for="namaCp">Nama Cp</label>
                         <input type="text" id="namaCp" name="namaCp" class="form-input" placeholder="Nama Contact Person" required>
@@ -80,11 +80,15 @@ if (isset($_SESSION['emailPerush'])) {
                       <textarea name="tentangPerush" id="tentangPerush" rows="5" class="form-input" placeholder="Tentang Perusahaan" required></textarea>
                     </div>
                     <div class="form-group">
+                      <label for="photo">Photo</label>
+                      <input type="file" id="photo" name="photo" class="form-input" >
+                    </div>
+                    <div class="form-group">
                       <button type="submit" name="register" id="registerButton" class="form-submit">Daftar</button>
                     </div>
                 </form>
                 <p class="loginhere">
-                    Sudah punya akun ? <a href="<?= base_url('auth/login.php'); ?>" class="loginhere-link">Login disini</a>
+                    Sudah punya akun ? <a href="<?= base_url_perus('auth/login.php'); ?>" class="loginhere-link">Login disini</a>
                 </p>
             </div>
         </div>
@@ -92,10 +96,9 @@ if (isset($_SESSION['emailPerush'])) {
 
   </div>
 
-  <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>
-  <script src="<?= base_url('_assets/js/popper.js') ?>"></script>
-  <script src="<?= base_url('_assets/js/bootstrap.min.js') ?>"></script>
-  <script src="<?= base_url('_assets/js/main.js') ?>"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script>
     function checkPasswordMatch() {
       var password = $("#password").val();

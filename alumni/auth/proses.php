@@ -1,5 +1,5 @@
 <?php
-require_once "../_config/config.php";
+require_once "../../_config/config.php";
 
 function uploadPhoto($nim) {
 
@@ -36,7 +36,7 @@ function uploadPhoto($nim) {
   $namaFileBaru .= $ekstensiGambar;
 
   // lolos pengecekan
-  move_uploaded_file($tmpName, '../_assets/images/'.$namaFileBaru);
+  move_uploaded_file($tmpName, base_url_image('alumni_profile').$namaFileBaru);
 
   return $namaFileBaru;
 }
@@ -68,11 +68,9 @@ if (isset($_POST['register'])) {
 
   if (mysqli_num_rows($sql_cek) > 0) {
     echo "<script>alert('NIM sudah ada');</script>";
-    echo "<script>window.location='".base_url('auth/register.php')."';</script>";
   } else {
     if (!$photo) {
       echo "<script>alert('gagal upload gambar');</script>";
-      echo "<script>window.location='".base_url('auth/register.php')."';</script>";
     } else {
       $query = "INSERT INTO alumni VALUES 
       ('$nim', '$nama', '$jenkel', '$tmpLahir', '$tglLahir', '$alamat_skrg', '$hp_skrg', '$email', '$wn', '$no_id', '$npwp', '$statusMarital', '$ipk', '$photo', '$kompetensi', '$password', 0, '$tentangAlumni')";
@@ -82,7 +80,7 @@ if (isset($_POST['register'])) {
   
       $_SESSION['nim'] = $_POST['nim'];
   
-      echo "<script>window.location='".base_url()."';</script>";
+      echo "<script>window.location='".base_url_alumni()."';</script>";
     }
   }
 

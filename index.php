@@ -9,15 +9,18 @@ require_once "./_config/config.php";
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;0,900;1,200;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <style>
     body {
       background: url("<?=base_url_image('Landing_Page.png')?>") no-repeat center center fixed;
       background-size: cover;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .mtop-232 {
@@ -26,26 +29,31 @@ require_once "./_config/config.php";
 
     .btn-login {
       position: absolute;
-      width: 117px;
-      height: 40px;
       right: 204px;
       top: 44px;
       text-align: center;
-
-      background: #7F05A8;
-      border-radius: 20px;
     }
 
     .btn-daftar {
       position: absolute;
-      width: 117px;
-      height: 40px;
       right: 60px;
       top: 44px;
       text-align: center;
+    }
 
+    .btn-primary{
+      width: 117px;
       background: #7F05A8;
       border-radius: 20px;
+      border-color: transparent;
+    }
+    .btn-primary:hover {
+      background-color: #8d2fad;
+      border-color: transparent;
+    }
+    .btn-primary:focus {
+      background-color: #8d2fad;
+      border-color: transparent;
     }
 
     .mleft-53 {
@@ -59,7 +67,6 @@ require_once "./_config/config.php";
       height: 85px;
       left: 53px;
       top: 225px;
-      font-family: Montserrat;
       font-style: normal;
       font-weight: bold;
       font-size: 50px;
@@ -74,7 +81,6 @@ require_once "./_config/config.php";
       height: 22px;
       left: 53px;
       top: 309px;
-      font-family: Montserrat;
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
@@ -88,7 +94,6 @@ require_once "./_config/config.php";
       height: 22px;
       left: 53px;
       top: 325px;
-      font-family: Montserrat;
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
@@ -103,7 +108,6 @@ require_once "./_config/config.php";
       height: 85px;
       left: 53px;
       top: 360px;
-      font-family: Montserrat;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
@@ -141,8 +145,8 @@ require_once "./_config/config.php";
 </head>
 
 <body>
-  <a class="btn btn-login text-light" href="<?= base_url('switch.php?isRegister=false') ?>" role="button">Login</a>
-  <a class="btn btn-daftar text-light" href="<?= base_url('switch.php?isRegister=true') ?>" role="button">Daftar</a>
+  <a class="btn btn-primary btn-login text-light" href="<?= base_url('switch.php?isRegister=false') ?>" role="button">Login</a>
+  <a class="btn btn-primary btn-daftar text-light" href="<?= base_url('switch.php?isRegister=true') ?>" role="button">Daftar</a>
 
 
 

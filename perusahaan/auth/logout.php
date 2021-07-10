@@ -1,6 +1,6 @@
 <?php
 
-require_once "../_config/config.php";
+require_once "../../_config/config.php";
 
 unset($_SESSION['emailPerush']);
-echo "<script>window.location = '".base_url('welcome')."';</script>";
+echo "<script>window.location = '".base_url()."';</script>";
