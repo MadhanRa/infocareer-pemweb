@@ -44,11 +44,11 @@ if (isset($_POST['add'])) {
   </div>
   <div class="form-group">
     <label for="deskripsi">Deskripsi Lowongan</label>
-    <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" required ></textarea>
+    <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" rows="3" style="height: auto!important;" required ></textarea>
   </div>
   <div class="form-group">
     <label for="pesan">Pesan ke pelamar</label>
-    <textarea type="text" class="form-control" id="pesan" name="pesan" required ></textarea>
+    <textarea type="text" class="form-control" id="pesan" name="pesan" rows="3" style="height: auto!important;" required ></textarea>
   </div>
   <div class="form-group">
     <label for="rangeSal">Range Salary</label>
@@ -65,7 +65,10 @@ if (isset($_POST['add'])) {
   <?php  
   }
   ?>
-  <button type="submit" class="btn btn-primary mb-3 mt-5" name="add">Tambah Lowongan</button>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary-themed mb-3 mt-5" name="add">Tambah Lowongan</button>
+    <a href="<?= base_url('home') ?>" class="btn btn-secondary-themed mb-3 mt-5 ml-5 text-center">Batal</a>
+  </div>
 </form>
 <?php  
 include_once('../_footer.php');

@@ -1,7 +1,8 @@
         
-      <footer>
-        <p class="text-center">Copyright 2021</p>
-      </footer>
+        </div>
+        <footer>
+          <p class="footer text-center">Copyright 2021</p>
+        </footer>
       </div>
 		</div>
     <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>

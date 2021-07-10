@@ -1,108 +1,56 @@
 <?php
 include_once('../_header.php');
 
-$nim = $_SESSION['nim'];
-$sql_alumni = mysqli_query($con, "SELECT * FROM alumni WHERE nim = $nim") or die(mysqli_error($con));
-$data = mysqli_fetch_assoc($sql_alumni);
-
-function uploadPhoto($nim) {
-
-  $namaFile = $_FILES['photo']['name'];
-  $ukuranFile = $_FILES['photo']['size'];
-  $error = $_FILES['photo']['error'];
-  $tmpName = $_FILES['photo']['tmp_name'];
-
-  // apakah ada gambar yang diupload
-  if ( $error === 4) {
-    echo "<script>alert('Anda belum memasukkan photo');</script>";
-    return false;
-  }
-
-  // cek apakah yang diupload adalah gambar
-  $extensiValid = ['jpg', 'jpeg', 'png'];
-  $format = pathinfo($namaFile, PATHINFO_EXTENSION);
-
-  if ( !in_array($format, $extensiValid) ) {
-    echo "<script>alert('Format file gambar tidak sesuai.');</script>";
-    return false;
-  }
-
-  // cek ukuran gambar
-  if ($ukuranFile > 2000000) {
-    echo "<script>alert('ukuran gambar terlalu besar.');</script>";
-    return false;
-  }
-
-  $ekstensiGambar = explode('.', $namaFile);
-  $ekstensiGambar = strtolower(end($ekstensiGambar));
-  $namaFileBaru = $nim;
-  $namaFileBaru .= '.';
-  $namaFileBaru .= $ekstensiGambar;
-
-  // lolos pengecekan
-  move_uploaded_file($tmpName, '../_assets/images/'.$namaFileBaru);
-
-  return $namaFileBaru;
-}
+$idPerush = $data['idPerush'];
 
 if (isset($_POST['edit'])) {
-  $alamat_skrg = trim(mysqli_real_escape_string($con , $_POST['alamat_skrg']));
-  $hp_skrg = trim(mysqli_real_escape_string($con , $_POST['hp_skrg']));
-  $npwp = trim(mysqli_real_escape_string($con , $_POST['npwp']));
-  $statusMarital = trim(mysqli_real_escape_string($con , $_POST['statusMarital']));
-  $kompetensi = trim(mysqli_real_escape_string($con , $_POST['kompetensi']));
-  $tentangAlumni = trim(mysqli_real_escape_string($con , $_POST['tentangAlumni']));
+  $namaCp = trim(mysqli_real_escape_string($con , $_POST['namaCp']));
+  $telpCp = trim(mysqli_real_escape_string($con , $_POST['telpCp']));
+  $produk = trim(mysqli_real_escape_string($con , $_POST['produk']));
+  $alamatPerush = trim(mysqli_real_escape_string($con , $_POST['alamatPerush']));
+  $telpFaxPerush = trim(mysqli_real_escape_string($con , $_POST['telpFaxPerush']));
+  $tentangPerush = trim(mysqli_real_escape_string($con , $_POST['tentangPerush']));
 
-  $photo = uploadPhoto($_POST['nim']);
+  $query = "UPDATE `perusahaan` SET `produk`='$produk',`alamatPerush`='$alamatPerush',`telpFaxPerush`='$telpFaxPerush',`namaCp`='$namaCp',`telpCp`='$telpCp',`tentangPerush`='$tentangPerush' WHERE idPerush = $idPerush";
 
-  if (!$photo) {
-    echo "<script>alert('gagal upload gambar');</script>";
-    echo "<script>window.location='".base_url('profil/edit.php')."';</script>";
-  } else {
-    $query = "UPDATE alumni SET 
-    alamat_skrg = '$alamat_skrg', 
-    hp_skrg = '$hp_skrg',
-    npwp = '$npwp',
-    statusMarital = '$statusMarital',
-    photo = '$photo',
-    kompetensi = '$kompetensi',
-    tentangAlumni = '$tentangAlumni'
-    WHERE nim = $nim";
-    mysqli_query($con, $query) or die(mysqli_error($con));
+  mysqli_query($con, $query) or die(mysqli_error($con));
 
-    echo "<script>alert('Data berhasil diubah');</script>";
-    echo "<script>window.location='".base_url('profil')."';</script>";
-  }
+  echo "<script>alert('Data berhasil diedit');</script>";
+  echo "<script>window.location='".base_url('profil')."';</script>";
 }
-
 ?>
 <h1>Edit Profil</h1>
-<form action="" method="post" enctype="multipart/form-data" autocomplete="off">
-    <label for="alamat_skrg">Alamat Sekarang</label><br>
-    <input type="text" id="alamat_skrg" name="alamat_skrg" required value="<?= $data['alamat_skrg'] ?>"><br>
-
-    <label for="hp_skrg">Nomor Handphone</label><br>
-    <input type="text" id="hp_skrg" name="hp_skrg" required value="<?= $data['hp_skrg'] ?>"><br>
-
-    <label for="npwp">NPWP</label><br>
-    <input type="text" id="npwp" name="npwp" required value="<?= $data['npwp'] ?>"><br>
-
-    <label for="statusMarital">Status Marital</label><br>
-    <input type="radio" id="kawin" name="statusMarital" value="Kawin" <?= $data['statusMarital'] == "Kawin" ? "checked" : null ?>>
-    <label for="kawin">Kawin</label><br>
-    <input type="radio" id="belumKawin" name="statusMarital" value="Belum Kawin" <?= $data['statusMarital'] == "Belum Kawin" ? "checked" : null ?>>
-    <label for="belumKawin">Belum Kawin</label><br>
-
-    <label for="kompetensi">Kompetensi</label><br>
-    <textarea name="kompetensi" id="kompetensi" cols="30" rows="5" required><?= $data['kompetensi'] ?></textarea><br>
-
-    <label for="tentangAlumni">Tentang Diri</label><br>
-    <textarea name="tentangAlumni" id="tentangAlumni" cols="30" rows="5" required><?= $data['tentangAlumni'] ?></textarea><br>
-
-    <label for="photo">Photo</label><br>
-    <input type="file" id="photo" name="photo"><br>
-    
-    <button type="submit" name="edit" id="editButton">Ubah</button>
+<form action="" method="post" autocomplete="off">
+    <div class="form-row">
+      <div class="col">
+        <label for="namaCp">Nama Cp</label>
+        <input type="text" id="namaCp" name="namaCp" class="form-control" placeholder="Nama Contact Person" value="<?= $data['namaCp'] ?>" required>
+      </div>
+      <div class="col">
+        <label for="telpCp">Telp Cp</label>
+        <input type="text" id="telpCp" name="telpCp" class="form-control" placeholder="Telp Contact Person" value="<?= $data['telpCp'] ?>" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="produk">Produk</label>
+      <input type="text" id="produk" name="produk" class="form-control" placeholder="Produk Perusahaan" value="<?= $data['produk'] ?>" required>
+    </div>
+    <div class="form-group">
+      <label for="alamatPerush">Alamat Perusahaan</label>
+      <input type="text" id="alamatPerush" name="alamatPerush" class="form-control" placeholder="Alamat Perusahaan" value="<?= $data['alamatPerush'] ?>" required>
+    </div>
+    <div class="form-group">
+      <label for="telpFaxPerush">Telp/fax Perusahaan</label>
+      <input type="text" id="telpFaxPerush" name="telpFaxPerush" class="form-control" placeholder="Telp/Fax Perusahaan" value="<?= $data['telpFaxPerush'] ?>" required>
+    </div>
+    <div class="form-group">
+      <label for="tentangPerush">Tentang Perusahaan</label>
+      <textarea name="tentangPerush" id="tentangPerush" rows="4" class="form-control" placeholder="Tentang Perusahaan" style="height: auto!important;" required><?= $data['tentangPerush'] ?></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" name="edit" id="registerButton" class="btn btn-primary-themed">Edit</button>
+      <a href="<?= base_url('profil') ?>" class="btn btn-secondary-themed mb-3 ml-5 mt-3">Batal</a>
+    </div>
   </form>
 
 <?php include_once('../_footer.php'); ?>

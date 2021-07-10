@@ -37,6 +37,7 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-bottom: 0.6rem;
   }
 
   .card a {
@@ -48,9 +49,41 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
     color: white;
   }
 
+  .card a:hover {
+    background: #757575;
+  }
+
   .card-body {
-    padding: 6px 12px;
-    margin-left: 12px;
+    padding: 0.7rem;
+  }
+
+  .btn-primary-themed{
+    width: 200px;
+    background: #7F05A8;
+    border-radius: 20px;
+    color: white;
+    }
+  .btn-secondary-themed {
+    width: 200px;
+    border: 1px solid #7F05A8;
+    background: white;
+    border-radius: 20px;
+    color: #7F05A8;
+  }
+
+  .title-perush {
+    font-size: 2rem;
+    color: #7F05A8;
+    font-weight: bold;
+  }
+  .search-input {
+    border: 1px solid #650984;
+    border-radius: 25px;
+    width: 280px!important;
+  }
+  #searchButton {
+    border-radius: 25px;
+    background: #650984;
   }
   </style>
   <body>
@@ -74,7 +107,7 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
             <a href="<?=base_url('profil')?>"><span class="fa fa-user mr-3"></span> Profil</a>
           </li>
           <li>
-              <a href="<?=base_url('antrean')?>"><span class="fa fa-suitcase mr-3"></span> Antrean</a>
+              <a href="<?=base_url('antrean')?>"><span class="fa fa-suitcase mr-3"></span> Daftar Pelamar</a>
           </li>
           <li>
             <a href="<?=base_url('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
@@ -84,4 +117,5 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
     	</nav>
 
         <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5 pt-5">
+      <div class="container-fluid">
+        <div id="content" class="p-4 p-md-5 pt-5">
