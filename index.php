@@ -1,5 +1,5 @@
 <?php
-require_once "../_config/config.php";
+require_once "./_config/config.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,10 +11,10 @@ require_once "../_config/config.php";
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <style>
     body {
-      background: url("<?=base_url('_assets/images/Landing_Page.png')?>") no-repeat center center fixed;
+      background: url("<?=base_url_image('Landing_Page.png')?>") no-repeat center center fixed;
       background-size: cover;
     }
     .mtop-232{
@@ -128,7 +128,7 @@ require_once "../_config/config.php";
   <title>Welcome to Infocareer</title>
 </head>
 <body>
-    <a class="btn btn-login text-light" href="<?= base_url('auth') ?>" role="button">Login</a>
+    <a class="btn btn-login text-light" href="<?= base_url('switch.php') ?>" role="button">Login</a>
     <a class="btn btn-daftar text-light" href="<?= base_url('auth/register.php') ?>" role="button">Daftar</a>
 
     
@@ -138,12 +138,11 @@ require_once "../_config/config.php";
     <p class="today">Today Melarat Tomorrow Konglomerat.</p>
     <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos velit veniam impedit excepturi mollitia cupiditate beatae perspiciatis officiis veritatis aut sequi ipsa, provident, consequatur dolore itaque, quibusdam repellendus necessitatibus libero!</p>
 
-    <img src="../_assets/images/in.png" class="img-in">
-    <img src="../_assets/images/ig.png" class="img-ig">
-    <img src="../_assets/images/fb.png" class="img-fb">`
-  <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>
-  <script src="<?= base_url('_assets/js/popper.js') ?>"></script>
-  <script src="<?= base_url('_assets/js/bootstrap.min.js') ?>"></script>
-  <script src="<?= base_url('_assets/js/main.js') ?>"></script>
+    <img src="<?= base_url_image('in.png') ?>" class="img-in">
+    <img src="<?= base_url_image('ig.png') ?>" class="img-ig">
+    <img src="<?= base_url_image('fb.png') ?>" class="img-fb">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
