@@ -20,6 +20,7 @@ $data = mysqli_fetch_assoc($sql_alumni);
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
     .img-in{
     position: absolute;
@@ -38,6 +39,9 @@ $data = mysqli_fetch_assoc($sql_alumni);
     }
     nav#sidebar{
       background-color: #9900CC;
+    }
+    .m-text p{
+      margin-bottom: 0.2rem;
     }
     </style>
 

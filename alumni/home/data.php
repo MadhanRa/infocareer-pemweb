@@ -51,7 +51,7 @@ if ( isset($_POST['search']) ) {
       <div class="img-square-wrapper">
         <img class="" src="<?=base_url('_assets/images/hiring.png')?>" alt="">
       </div>
-      <div class="card-body">
+      <div class="card-body m-text">
         <div class="card-header text-center"><?= $data['namaPerush'] ?></div>
         <h5 class="card-title"><?= $data['judul'] ?></h5>
         <p class="card-text">Membutuhkan <?= $data['lowongan'] ?> pekerja.</p>
