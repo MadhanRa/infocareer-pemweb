@@ -1,5 +1,7 @@
 <?php
 require_once "./_config/config.php";
+
+$isRegister = $_GET['isRegister'];
 ?>
 
 <!DOCTYPE html>
@@ -20,44 +22,108 @@ require_once "./_config/config.php";
   @media (min-width: 768px) {
   .h-md-100 { height: 100vh; }
   }
-  .bg-kiri{
+  .bg-ungu{
     background-color: #9900CC;
   }
-  .bg-kanan{
+  .bg-putih{
     background-color: #FFFFFF;
   }
+  .text-welcome{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 20px;
+
+    text-align: center;
+    color: #9900CC;
+    }
+   
+    .text-welcome2{
+    max-width: 400px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+
+    text-align: justify;
+    color: #666666;
+    margin-top: 1.2rem;
+    }
+
   </style>
   <title>Switch - Infocareer</title>
 </head>
 <body>
-<div class="d-md-flex h-md-100 align-items-center">
+  <div class="d-md-flex h-md-100 align-items-center">
+  <?php if ($isRegister==='true') {?>
 
-<!-- First Half -->
-<div class="col-md-6 p-0 h-md-100 bg-kiri">
-  <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
-    <div class="pt-5 pb-5">
-      <p class="text-welcome">Selamat Datang</p>
-      <img src="<?= base_url_image('laptop-icon-bgswitch.png') ?>" class="img-gambar">
-      <p class="text-welcome2">Selamat datang kembali di website pencarian kerja, pemuda harapan bangsa harus banyak berkarya untuk kemajuan negara.</p>
+    <!-- First Half -->
+    <div class="col-md-6 p-0 h-md-100 bg-ungu">
+      <div class="row h-100">
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+          <a href="<?= base_url_alumni('auth/register.php') ?>"><img src="<?= base_url_image('Group 51_w.png') ?>"></a>
+        </div>
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+          <a href="<?= base_url_perus('auth/register.php') ?>"><img src="<?= base_url_image('Group 53_w.png') ?>"></a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<!-- Second Half -->
-<div class="col-md-6 p-5 h-md-100 bg-kanan">
-  <div class="row h-100">
-  <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
-    <a  href="<?= base_url_alumni() ?>"><img src="<?= base_url_image('Group 51.png') ?>"></a>
-  </div>
-  <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
-    <a href="<?= base_url_perus() ?>"><img src="<?= base_url_image('Group 53.png') ?>"></a>
-  </div>
-  </div>
-</div>
+      
+      <!-- Second Half -->
+    <div class="col-md-6 p-5 h-md-100 bg-putih">
+        
+      <div class="d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+        <div class="p-5">
+          <p class="text-welcome">Selamat Datang</p>
+          <img src="<?= base_url_image('laptop-icon-bglogin.png') ?>" class="img-gambar">
+          <p class="text-welcome2">Selamat datang kembali di website pencarian kerja, pemuda harapan bangsa harus banyak berkarya untuk kemajuan negara.</p>
+        </div>
+      </div>
+      <div div class="d-flex justify-content-center">
+        <img src="<?= base_url_image('in_ung.png') ?>" class="m-2">
+        <img src="<?= base_url_image('ig_ung.png') ?>" class="m-2">
+        <img src="<?= base_url_image('fb_ung.png') ?>" class="m-2">
+      </div>
+    </div>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <?php
+  } else {?>
+
+    <!-- First Half -->
+    <div class="col-md-6 p-0 h-md-100 bg-ungu">
+      <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+        <div class="pt-5 pb-5">
+          <p class="text-welcome" style="color: white;">Selamat Datang</p>
+          <img src="<?= base_url_image('laptop-icon-bgswitch.png') ?>" class="img-gambar">
+          <p class="text-welcome2" style="color: white;">Selamat datang kembali di website pencarian kerja, pemuda harapan bangsa harus banyak berkarya untuk kemajuan negara.</p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Second Half -->
+    <div class="col-md-6 p-5 h-md-100 bg-putih">
+      <div class="row h-100">
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+          <a href="<?= base_url_alumni() ?>"><img src="<?= base_url_image('Group 51.png') ?>"></a>
+        </div>
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+          <a href="<?= base_url_perus() ?>"><img src="<?= base_url_image('Group 53.png') ?>"></a>
+        </div>
+      </div>
+      <div div class="d-flex justify-content-center">
+        <img src="<?= base_url_image('in_ung.png') ?>" class="m-2">
+        <img src="<?= base_url_image('ig_ung.png') ?>" class="m-2">
+        <img src="<?= base_url_image('fb_ung.png') ?>" class="m-2">
+      </div>
+    </div>
+
+  <?php
+  }?>
+  </div>
+    
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </body>
 </html>

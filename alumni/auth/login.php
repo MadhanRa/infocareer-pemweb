@@ -1,8 +1,8 @@
 <?php
-require_once "../_config/config.php";
+require_once "../../_config/config.php";
 
 if (isset($_SESSION['nim'])) {
-  echo "<script>window.location = '".base_url()."';</script>";
+  echo "<script>window.location = '".base_url_alumni()."';</script>";
 } else {
 
   if (isset($_POST['login'])) {
@@ -19,7 +19,7 @@ if (isset($_SESSION['nim'])) {
       $row = mysqli_fetch_assoc($sql_login);
       if ($password === $row['passwordAlumni']) {
         $_SESSION['nim'] = $nim;
-        echo "<script>window.location='".base_url()."';</script>";
+        echo "<script>window.location='".base_url_alumni()."';</script>";
       }
     }
 
@@ -40,17 +40,26 @@ if (isset($_SESSION['nim'])) {
   <!-- CSS GAN!!! -->
   <style>
    body {
-    background: url("<?=base_url('_assets/images/bg-login.png')?>") no-repeat center center fixed;
+    background: url("<?=base_url_image('bg-login.png')?>") no-repeat center center fixed;
     background-size: cover;
     }
     @media (min-width: 768px) {
     .h-md-100 { height: 100vh; }
     }
-    .btn-masuk{
+    .btn-primary{
     width: 336px;
     height: 46px;
     background: #DE83FD;
     border-radius: 20px;
+    border-color: transparent;
+    }
+    .btn-primary:hover {
+      background-color: #8d2fad;
+      border-color: transparent;
+    }
+    .btn-primary:focus {
+      background-color: #8d2fad;
+      border-color: transparent;
     }
     .text-welcome{
     font-style: normal;
@@ -76,46 +85,48 @@ if (isset($_SESSION['nim'])) {
   <title>Login - Infocareer Alumni</title>
 </head>
 <body>
-<div class="d-md-flex h-md-100 align-items-center">
 
-<!-- First Half -->
-<div class="col-md-6 p-0 h-md-100">
-    <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
-        <div class="logoarea pt-5 pb-5">
-          <p class="text-welcome">Selamat Datang</p>
-          <img src="../_assets/images/laptop-icon-bglogin.png" class="img-gambar">
-          <p class="text-welcome2">Selamat datang kembali di website pencarian kerja, pemuda harapan bangsa harus banyak berkarya untuk kemajuan negara.</p>
+  <div class="d-md-flex h-md-100 align-items-center">
+
+    <!-- First Half -->
+    <div class="col-md-6 p-0 h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+              <p class="text-welcome">Selamat Datang</p>
+              <img src="<?= base_url_image('laptop-icon-bglogin.png') ?>" class="img-gambar">
+              <p class="text-welcome2">Selamat datang kembali di website pencarian kerja, pemuda harapan bangsa harus banyak berkarya untuk kemajuan negara.</p>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Second Half -->
-<div class="col-md-6 p-0 h-md-100 loginarea">
-    <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-      <form method="post" action="" autocomplete="off">
-        <div class="form-group">
-          <label class="text-white" for="nim">NIM</label>
-          <input type="text" class="form-control" id="nim" placeholder="Enter NIM" name="nim" required>
+    <!-- Second Half -->
+    <div class="col-md-6 p-0 h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+          <form method="post" action="" autocomplete="off">
+            <div class="form-group">
+              <label class="text-white" for="nim">NIM</label>
+              <input type="text" class="form-control" id="nim" placeholder="Enter NIM" name="nim" required>
+            </div>
+            <div class="form-group">
+                <label class="text-white" for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                <?php if( isset($error) ) : ?>
+                <small class="form-text text-white" style="font-style:italic;">email/password salah</small>
+                <?php endif; ?>
+            </div> 
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit" name="login" role="button">Masuk</button>
+            </div>
+            <div class="text-center">
+              <p class="text-white mt-3">Belum punya akun? daftar dulu <b><a class="text-white" href="<?= base_url_alumni('auth/register.php')?>">disini!</a></b></p>
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-            <label class="text-white" for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-            <?php if( isset($error) ) : ?>
-            <small class="form-text text-white" style="font-style:italic;">email/password salah</small>
-            <?php endif; ?>
-        </div> 
-        <div class="form-group">
-          <button class="btn btn-masuk" type="submit" name="login" role="button">Masuk</button>
-        </div>
-        <p class="text-white mt-3">Belum punya akun? daftar dulu <b><a class="text-white" href="<?= base_url('auth/register.php')?>">disini!</a></b></p>
-      </form>
     </div>
-</div>
-    
-  <script src="<?= base_url('_assets/js/jquery.min.js')?>"></script>
-  <script src="<?= base_url('_assets/js/popper.js') ?>"></script>
-  <script src="<?= base_url('_assets/js/bootstrap.min.js') ?>"></script>
-  <script src="<?= base_url('_assets/js/main.js') ?>"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 
