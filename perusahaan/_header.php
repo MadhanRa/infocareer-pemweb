@@ -1,9 +1,9 @@
 <?php 
 
-require_once "_config/config.php";
+require_once "../_config/config.php";
 
 if (!isset($_SESSION['emailPerush'])) {
-  echo "<script>window.location='" .base_url('auth') ."';</script>";
+  echo "<script>window.location='" .base_url_perus('auth') ."';</script>";
 }
 $email = $_SESSION["emailPerush"];
 $sql_perusahaan = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = '$email'") or die(mysqli_error($con));
@@ -19,7 +19,7 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?= base_url('_assets/css/style.css') ?>">
+		<link rel="stylesheet" href="<?= base_url_css('style.css') ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   </head>
   <style>
@@ -85,6 +85,22 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
     border-radius: 25px;
     background: #650984;
   }
+
+  .img-in{
+    position: absolute;
+    right: 180px;
+    bottom: 37.98px;
+  }
+  .img-ig{
+    position: absolute;
+    right: 140px;
+    bottom: 37.98px;
+  }
+  .img-fb{
+    position: absolute;
+    right: 110px;
+    bottom: 37.98px;
+  }
   </style>
   <body>
 		
@@ -94,26 +110,28 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
 	        </button>
         </div>
-	  		<div class="img bg-wrap text-center py-4" style="background-image: url(<?= base_url('_assets/images/bg_1.jpg') ?>);">
+	  		<div class="img bg-wrap text-center py-4" style="background-image: url(<?= base_url_image('bg_1.jpg') ?>);">
 	  			<div class="user-logo">
 	  				<h3><?= $data['namaPerush'] ?></h3>
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-            <a href="<?=base_url('home')?>"><span class="fa fa-home mr-3"></span> Home</a>
+            <a href="<?=base_url_perus('home')?>"><span class="fa fa-home mr-3"></span> Home</a>
           </li>
           <li>
-            <a href="<?=base_url('profil')?>"><span class="fa fa-user mr-3"></span> Profil</a>
+            <a href="<?=base_url_perus('profil')?>"><span class="fa fa-user mr-3"></span> Profil</a>
           </li>
           <li>
-              <a href="<?=base_url('antrean')?>"><span class="fa fa-suitcase mr-3"></span> Daftar Pelamar</a>
+              <a href="<?=base_url_perus('antrean')?>"><span class="fa fa-suitcase mr-3"></span> Daftar Pelamar</a>
           </li>
           <li>
-            <a href="<?=base_url('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            <a href="<?=base_url_perus('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
           </li>
         </ul>
-
+        <img src="<?=base_url_image('in.png')?>" class="img-in">
+        <img src="<?=base_url_image('ig.png')?>" class="img-ig">
+        <img src="<?=base_url_image('fb.png')?>" class="img-fb">
     	</nav>
 
         <!-- Page Content  -->
