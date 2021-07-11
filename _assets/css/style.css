@@ -10619,6 +10619,8 @@ h5,
 }
 #sidebar ul li {
   font-size: 16px;
+  padding-left: 10px;
+  margin: 20px 0;
 }
 #sidebar ul li > ul {
   margin-left: 10px;
@@ -10630,7 +10632,6 @@ h5,
   padding: 15px 30px;
   display: block;
   color: rgba(255, 255, 255, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 #sidebar ul li a span.notif {
   position: relative;
@@ -10652,14 +10653,15 @@ h5,
   color: #650984;
   background: white;
   border-bottom: 1px solid white;
+  border-radius: 20px 0 0 20px;
 }
 #sidebar ul li.active > a {
   background: white;
   color: #650984;
+  border-radius: 20px 0 0 20px;
 }
 #sidebar ul li.active > a:hover {
   background: white;
-  border-bottom: 1px solid white;
 }
 @media (max-width: 991.98px) {
   #sidebar {
@@ -10775,13 +10777,13 @@ a[data-toggle="collapse"] {
 }
 
 .form-control {
-  height: 40px !important;
+  height: 40px;
   background: #fff;
   color: #000;
   font-size: 13px;
   border-radius: 4px;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   border: transparent;
 }
 .form-control:focus,

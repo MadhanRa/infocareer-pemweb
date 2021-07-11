@@ -22,29 +22,7 @@ $data = mysqli_fetch_assoc($sql_alumni);
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="<?= base_url_css('style.css') ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-      .img-in{
-        position: absolute;
-        right: 180px;
-        bottom: 37.98px;
-      }
-      .img-ig{
-        position: absolute;
-        right: 140px;
-        bottom: 37.98px;
-      }
-      .img-fb{
-        position: absolute;
-        right: 110px;
-        bottom: 37.98px;
-      }
-      nav#sidebar{
-        background-color: #9900CC;
-      }
-      .m-text p{
-        margin-bottom: 0.2rem;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="<?= base_url_css('custom.css') ?>">
 
   </head>
   <body>
@@ -61,13 +39,13 @@ $data = mysqli_fetch_assoc($sql_alumni);
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
+          <li id="home">
             <a href="<?=base_url_alumni('home')?>"><span class="fa fa-home mr-3"></span> Home</a>
           </li>
-          <li>
+          <li id="profil">
             <a href="<?=base_url_alumni('profil')?>"><span class="fa fa-user mr-3"></span> Profil</a>
           </li>
-          <li>
+          <li id="antrean">
               <a href="<?=base_url_alumni('antrean')?>"><span class="fa fa-suitcase mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Antrean</a>
           </li>
           <li>
@@ -80,4 +58,5 @@ $data = mysqli_fetch_assoc($sql_alumni);
     	</nav>
 
         <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5 pt-5">
+      <div class="container-fluid">
+        <div id="content" class="p-4 p-md-5 pt-5">

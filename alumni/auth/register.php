@@ -132,7 +132,7 @@ if (isset($_SESSION['nim'])) {
             </div>
             <div class="form-group">
               <label for="photo">Photo</label>
-              <input type="file" id="photo" name="photo" class="form-input" >
+              <input type="file" id="photo" name="photo" class="form-control-file" >
             </div>
             <div class="form-group">
               <button type="submit" name="register" id="registerButton" class="form-submit">Daftar</button>

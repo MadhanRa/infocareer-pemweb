@@ -1,10 +1,6 @@
 <?php
 include_once('../_header.php');
 
-$nim = $_SESSION['nim'];
-$sql_alumni = mysqli_query($con, "SELECT * FROM alumni WHERE nim = $nim") or die(mysqli_error($con));
-$data = mysqli_fetch_assoc($sql_alumni);
-
 function uploadPhoto($nim) {
 
   $namaFile = $_FILES['photo']['name'];
@@ -57,12 +53,10 @@ if (isset($_POST['edit'])) {
 
   if (!$photo) {
     echo "<script>alert('gagal upload gambar');</script>";
-    echo "<script>window.location='".base_url('profil/edit.php')."';</script>";
   } else {
     $query = "UPDATE alumni SET 
     alamat_skrg = '$alamat_skrg', 
     hp_skrg = '$hp_skrg',
-    npwp = '$npwp',
     statusMarital = '$statusMarital',
     photo = '$photo',
     kompetensi = '$kompetensi',
@@ -71,38 +65,51 @@ if (isset($_POST['edit'])) {
     mysqli_query($con, $query) or die(mysqli_error($con));
 
     echo "<script>alert('Data berhasil diubah');</script>";
-    echo "<script>window.location='".base_url('profil')."';</script>";
+    echo "<script>window.location='".base_url_alumni('profil')."';</script>";
   }
 }
 
 ?>
 <h1>Edit Profil</h1>
-<form action="" method="post" enctype="multipart/form-data" autocomplete="off">
-    <label for="alamat_skrg">Alamat Sekarang</label><br>
-    <input type="text" id="alamat_skrg" name="alamat_skrg" required value="<?= $data['alamat_skrg'] ?>"><br>
-
-    <label for="hp_skrg">Nomor Handphone</label><br>
-    <input type="text" id="hp_skrg" name="hp_skrg" required value="<?= $data['hp_skrg'] ?>"><br>
-
-    <label for="npwp">NPWP</label><br>
-    <input type="text" id="npwp" name="npwp" required value="<?= $data['npwp'] ?>"><br>
-
-    <label for="statusMarital">Status Marital</label><br>
-    <input type="radio" id="kawin" name="statusMarital" value="Kawin" <?= $data['statusMarital'] == "Kawin" ? "checked" : null ?>>
-    <label for="kawin">Kawin</label><br>
-    <input type="radio" id="belumKawin" name="statusMarital" value="Belum Kawin" <?= $data['statusMarital'] == "Belum Kawin" ? "checked" : null ?>>
-    <label for="belumKawin">Belum Kawin</label><br>
-
-    <label for="kompetensi">Kompetensi</label><br>
-    <textarea name="kompetensi" id="kompetensi" cols="30" rows="5" required><?= $data['kompetensi'] ?></textarea><br>
-
-    <label for="tentangAlumni">Tentang Diri</label><br>
-    <textarea name="tentangAlumni" id="tentangAlumni" cols="30" rows="5" required><?= $data['tentangAlumni'] ?></textarea><br>
-
-    <label for="photo">Photo</label><br>
-    <input type="file" id="photo" name="photo"><br>
-    
-    <button type="submit" name="edit" id="editButton">Ubah</button>
+<form action="" method="post" enctype="multipart/form-data" autocomplete="off" class="mt-3">
+    <div class="form-group">
+      <label for="alamat_skrg">Alamat Sekarang</label>
+      <input type="text" id="alamat_skrg" name="alamat_skrg" class="form-control" required value="<?= $data['alamat_skrg'] ?>">
+    </div>
+    <div class="form-group">
+    <label for="hp_skrg">Nomor Handphone</label>
+    <input type="text" id="hp_skrg" name="hp_skrg" class="form-control" required value="<?= $data['hp_skrg'] ?>">
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Status Marital</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input type="radio" id="kawin" name="statusMarital" class="form-check-input" value="Kawin" <?= $data['statusMarital'] == "Kawin" ? "checked" : null ?>>
+            <label for="kawin" class="form-check-label">Kawin</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" id="belumKawin" name="statusMarital" class="form-check-input" value="Belum Kawin" <?= $data['statusMarital'] == "Belum Kawin" ? "checked" : null ?>>
+            <label for="belumKawin" class="form-check-label">Belum Kawin</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <label for="kompetensi">Kompetensi</label>
+      <textarea name="kompetensi" id="kompetensi" class="form-control" cols="30" rows="5" required><?= $data['kompetensi'] ?></textarea>
+    </div>
+    <div class="form-group">
+      <label for="tentangAlumni">Tentang Diri</label>
+      <textarea name="tentangAlumni" id="tentangAlumni" class="form-control" cols="30" rows="5" required><?= $data['tentangAlumni'] ?></textarea>
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo</label>
+      <input type="file" id="photo" class="form-control-file" name="photo">
+    </div>
+    <div class="form-group">
+      <button type="submit" name="edit" id="editButton" class="btn btn-edit">Ubah</button>
+    </div>
   </form>
 
 <?php include_once('../_footer.php'); ?>
