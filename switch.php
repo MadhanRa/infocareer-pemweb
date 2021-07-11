@@ -50,6 +50,11 @@ $isRegister = $_GET['isRegister'];
     margin-top: 1.2rem;
     }
 
+    div .shadow-hv:hover {
+      box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+      border-radius: 15px;
+    }
+
   </style>
   <title>Switch - Infocareer</title>
 </head>
@@ -58,12 +63,12 @@ $isRegister = $_GET['isRegister'];
   <?php if ($isRegister==='true') {?>
 
     <!-- First Half -->
-    <div class="col-md-6 p-0 h-md-100 bg-ungu">
+    <div class="col-md-6 p-5 h-md-100 bg-ungu">
       <div class="row h-100">
-        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center shadow-hv">
           <a href="<?= base_url_alumni('auth/register.php') ?>"><img src="<?= base_url_image('Group 51_w.png') ?>"></a>
         </div>
-        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center shadow-hv">
           <a href="<?= base_url_perus('auth/register.php') ?>"><img src="<?= base_url_image('Group 53_w.png') ?>"></a>
         </div>
       </div>
@@ -103,10 +108,10 @@ $isRegister = $_GET['isRegister'];
   <!-- Second Half -->
     <div class="col-md-6 p-5 h-md-100 bg-putih">
       <div class="row h-100">
-        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center shadow-hv">
           <a href="<?= base_url_alumni() ?>"><img src="<?= base_url_image('Group 51.png') ?>"></a>
         </div>
-        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center">
+        <div class="col-sm-12 d-md-flex p-5 my-auto justify-content-center shadow-hv">
           <a href="<?= base_url_perus() ?>"><img src="<?= base_url_image('Group 53.png') ?>"></a>
         </div>
       </div>
