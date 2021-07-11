@@ -18,7 +18,6 @@
 }
 </style>
 <?php 
-
 include_once('../_header.php');
 
 $sql_lowongan = mysqli_query($con, "SELECT l.id, l.judul, l.lowongan, l.batasLowongan, l.range_salary, p.namaPerush FROM perusahaan_lowongan AS l JOIN perusahaan AS p ON l.idPerush = p.idPerush WHERE hapus = 0 ORDER BY id DESC") or die (mysqli_error($con));
@@ -38,7 +37,7 @@ if ( isset($_POST['search']) ) {
 <form class="form-inline justify-content-center">
     <input class="border-search mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     <div class="input-group-append">
-      <img src="<?=base_url('_assets/images/search-icon.png')?>" class="btn-search" type ="submit">
+      <img src="<?=base_url_image('search-icon.png')?>" class="btn-search" type ="submit">
     </div>
 </form>
 
@@ -49,7 +48,7 @@ if ( isset($_POST['search']) ) {
   <!-- Looping -->
     <div class="card-horizontal">
       <div class="img-square-wrapper">
-        <img class="" src="<?=base_url('_assets/images/hiring.png')?>" alt="">
+        <img class="" src="<?=base_url_image('lowongan/hiring.png')?>" alt="">
       </div>
       <div class="card-body m-text">
         <div class="card-header text-center"><?= $data['namaPerush'] ?></div>

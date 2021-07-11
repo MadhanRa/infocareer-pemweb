@@ -65,7 +65,7 @@ $requirements = explode(";", $data['requirements']);
 <div class="row">
     <div class="col-md-auto">
       <!-- Logo Perusahaan -->
-      <img src="<?=base_url('_assets/images/placeholder_lowongan_big.png')?>">
+      <img src="<?=base_url_image('lowongan/placeholder_lowongan_big.png')?>">
     </div>
     <div class="col-sm">
       <!-- Judul Lowongan -->
@@ -132,7 +132,7 @@ $requirements = explode(";", $data['requirements']);
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center judul-modal" id="exampleModalLongTitle">Masukkan lamaran</h5>
+        <h5 class="modal-title text-center judul-modal" id="exampleModalLongTitle">Daftar lamaran</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -140,32 +140,20 @@ $requirements = explode(";", $data['requirements']);
       <div class="modal-body">
         <!-- Lampirkan persyaratan -->
         <div class="container">
-          <form>
-            <div class="form-group">
-              <label>Nama Lengkap</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Lengkap">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Pendidikan Terakhir</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="SMA/SMK/MA/S1/S2/S3">
-            </div>
+          <form action="proses.php" method="post" enctype="multipart/form-data">
             <div class="custom-file">
-              <label>Lampirkan Persyaratan</label>
-              <input type="file" class="custom-file-input" id="customFile">
+              <input type="file" class="custom-file-input" name="file_lampiran" id="file_lampiran">
               <label class="custom-file-label" for="customFile">Masukkan lampiran</label>
             </div>
+            <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
+            <input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
+            <input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
           </form> 
-          <!-- <form action="proses.php" method="post">
-          <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
-          <input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
-          <input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
-          <button type="submit" name="daftar">Daftar</button>
-          </form> -->
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-modal-batal" data-dismiss="modal">Batal</button>
-        <button type="submit" name="daftar" class="btn-modal-kirim">Kirim</button>
+        <button type="submit" name="daftar" class="btn btn-modal-kirim">Kirim</button>
       </div>
     </div>
   </div>

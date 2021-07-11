@@ -10649,17 +10649,17 @@ h5,
   font-size: 8px;
 }
 #sidebar ul li a:hover {
-  color: #fff;
-  background: #2f89fc;
-  border-bottom: 1px solid #2f89fc;
+  color: #650984;
+  background: white;
+  border-bottom: 1px solid white;
 }
 #sidebar ul li.active > a {
-  background: transparent;
-  color: #fff;
+  background: white;
+  color: #650984;
 }
 #sidebar ul li.active > a:hover {
-  background: #2f89fc;
-  border-bottom: 1px solid #2f89fc;
+  background: white;
+  border-bottom: 1px solid white;
 }
 @media (max-width: 991.98px) {
   #sidebar {
@@ -10691,7 +10691,7 @@ h5,
   }
 }
 #sidebar .custom-menu .btn.btn-primary {
-  background: #2f89fc;
+  background: #9900cc;
   border-color: transparent;
   position: relative;
   color: #000;
@@ -10718,17 +10718,7 @@ h5,
   position: relative;
   z-index: 0;
 }
-.bg-wrap:after {
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: "";
-  background: #000;
-  opacity: 0.3;
-}
+
 .bg-wrap .user-logo .img {
   width: 100px;
   height: 100px;
@@ -10776,8 +10766,8 @@ a[data-toggle="collapse"] {
 }
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
-  background: #2f89fc !important;
-  border-color: #2f89fc !important;
+  background: #720d94 !important;
+  border-color: none;
 }
 
 .footer p {
@@ -10818,4 +10808,3 @@ a[data-toggle="collapse"] {
 .subscribe-form .form-control {
   background: #4897fc;
 }
-
