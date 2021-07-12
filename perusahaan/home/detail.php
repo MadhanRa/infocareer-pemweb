@@ -14,7 +14,7 @@ $requirements = explode(";", $data['requirements']);
 
 if (isset($_POST['delete'])) {
   mysqli_query($con, "UPDATE perusahaan_lowongan SET hapus=1 WHERE id='$id'");
-  echo "<script>window.location='".base_url()."';</script>";
+  echo "<script>window.location='".base_url_perus('home')."';</script>";
 }
 ?>
 

@@ -55,6 +55,12 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
       color: white;
     }
 
+    .card img {
+      height: 163px;
+      width: 163px;
+      object-fit: cover;
+    }
+
     .card a:hover {
       background: #757575;
     }

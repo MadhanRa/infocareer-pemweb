@@ -9,7 +9,7 @@ $newId = 1 + $ids['ids'];
 
 ?>
 <h1>Tambah Lowongan</h1>
-<form action="proses.php" method="post" class="my-5" autocomplete="off">
+<form action="proses.php" method="post" enctype="multipart/form-data" class="my-5" autocomplete="off">
   <input type="hidden" name="idPerush" value="<?= $idPerush ?>">
   <input type="hidden" name="idLowongan" value="<?= $newId ?>">
   <div class="form-group">
@@ -39,10 +39,10 @@ $newId = 1 + $ids['ids'];
     <input type="text" class="form-control" id="rangeSal" name="rangeSal" required >
   </div>
   <div class="form-group">
-    <label for="photo">Gambar Lowongan</label>
-    <input type="file" id="photo" name="photo" class="form-input" >
+    <label for="gambar">Gambar Lowongan</label>
+    <input type="file" id="gambar" name="gambar" class="form-control-file" >
   </div>
-  <h5>Syarat</h5>
+  <h5 class="mt-5">Syarat</h5>
   <?php while ($requirements = mysqli_fetch_assoc($sql_syarat)) {?>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="<?= $requirements['id'] ?>" name="syarat[]">
