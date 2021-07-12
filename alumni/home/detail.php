@@ -69,16 +69,14 @@ $requirements = explode(";", $data['requirements']);
     </div>
     <div class="col-sm">
       <!-- Judul Lowongan -->
-      <div>
-        <h3><?= $data['judul'] ?></h3>
-        <h6><?= $data['namaPerush'] ?></h6>
-      </div>
+      <h3><?= $data['judul'] ?></h3>
+      <h6><?= $data['namaPerush'] ?></h6>
       <!-- Info Lowongan -->
       <div class="m-text">
         <p>Dibutuhkan <?= $data['lowongan'] ?> orang</p>
-        <p>Dibuka sejak <?= conv_date($data['tglMasuk']) ?></p>
-        <p>Batas Lowongan <?= conv_date($data['batasLowongan']) ?></p>
-        <p><b>Gaji</b> <?= $data['range_salary'] ?></p>
+        <p>Dibuka sejak <b><?= conv_date($data['tglMasuk']) ?></b></p>
+        <p>Batas Lowongan <b><?= conv_date($data['batasLowongan']) ?></b></p>
+        <p>Gaji <b><?= $data['range_salary'] ?></b></p>
       </div>
       <!-- Syarat Lowongan -->
         <h5>Syarat-syarat</h5>
@@ -91,20 +89,14 @@ $requirements = explode(";", $data['requirements']);
           ?>
         </ul>
     </div>
-    <div class="col-md">
-      <!-- Detail Lowongan -->
-      <div>  
-        <h5>Deskripsi</h5>
-        <p><?= $data['deskripsi'] ?></p>
-      </div>
-    </div>
 </div>
 
-
+<h5 class="mt-3">Deskripsi</h5>
+<p><?= $data['deskripsi'] ?></p>
 <!-- About company -->
-<div class="m-text">
+<div class="mt-5">
   <h4>Tentang Perusahaan</h4>
-  <h6><?= $data['namaPerush'] ?></h6>
+  <h5><?= $data['namaPerush'] ?></h5>
   <p>Alamat</p>
   <p><?= $data['alamatPerush'] ?></p>
   <p>Tentang Perusahaan</p>
@@ -142,14 +134,13 @@ $requirements = explode(";", $data['requirements']);
         <div class="modal-body">
           <!-- Lampirkan persyaratan -->
           <div class="container">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" name="file_lampiran" id="file_lampiran">
-                <label class="custom-file-label" for="customFile">Masukkan lampiran</label>
-              </div>
-              <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
-              <input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
-              <input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="file_lampiran" id="file_lampiran">
+              <label class="custom-file-label" for="customFile">Masukkan lampiran</label>
             </div>
+            <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
+            <input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
+            <input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-modal-batal" data-dismiss="modal">Batal</button>

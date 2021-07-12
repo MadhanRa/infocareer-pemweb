@@ -1,4 +1,5 @@
 <?php
+
 require_once "../../_config/config.php";
 
 function uploadPhoto($email) {
@@ -41,10 +42,9 @@ function uploadPhoto($email) {
   return $namaFileBaru;
 }
 
-if (isset($_POST['register'])) {
-  $email = trim(mysqli_real_escape_string($con , $_POST['emailPerush']));
-  $password = trim(mysqli_real_escape_string($con , $_POST['password']));
-  $nama = trim(mysqli_real_escape_string($con , $_POST['namaPerush']));
+if (isset($_POST['edit'])) {
+  $idPerush = $_POST['idPerush'];
+  $emailPerush = $_POST['emailPerush'];
   $namaCp = trim(mysqli_real_escape_string($con , $_POST['namaCp']));
   $telpCp = trim(mysqli_real_escape_string($con , $_POST['telpCp']));
   $produk = trim(mysqli_real_escape_string($con , $_POST['produk']));
@@ -52,26 +52,17 @@ if (isset($_POST['register'])) {
   $telpFaxPerush = trim(mysqli_real_escape_string($con , $_POST['telpFaxPerush']));
   $tentangPerush = trim(mysqli_real_escape_string($con , $_POST['tentangPerush']));
 
-  $photo = uploadPhoto($_POST['emailPerush']);
+  $logo_perus = uploadPhoto($emailPerush);
 
-  $sql_cek = mysqli_query($con, "SELECT * FROM perusahaan WHERE emailPerush = '$email'");
-
-  if (mysqli_num_rows($sql_cek) > 0) {
-    echo "<script>alert('Email sudah ada');</script>";
+  if (!$logo_perus) {
+    echo "<script>alert('gagal upload gambar');</script>";
   } else {
-    if (!$photo) {
-      echo "<script>alert('gagal upload gambar');</script>";
-    } else {
-      $query = "INSERT INTO perusahaan (`idPerush`, `namaPerush`, `produk`, `alamatPerush`, `telpFaxPerush`, `emailPerush`, `namaCp`, `telpCp`, `regTime`, `tentangPerush`, `passwordPerush`, `flag`, `logo_perus`) VALUES (NULL, '$nama', '$produk', '$alamatPerush', '$telpFaxPerush', '$email', '$namaCp', '$telpCp', CURRENT_TIMESTAMP, '$tentangPerush', '$password', 1, '$photo')";
+    $query = "UPDATE `perusahaan` SET `produk`='$produk',`alamatPerush`='$alamatPerush',`telpFaxPerush`='$telpFaxPerush',`namaCp`='$namaCp',`telpCp`='$telpCp',`tentangPerush`='$tentangPerush', `logo_perus`='$logo_perus' WHERE idPerush = $idPerush";
 
-      mysqli_query($con, $query) or die(mysqli_error($con));
+    mysqli_query($con, $query) or die(mysqli_error($con));
 
-      echo "<script>alert('Data berhasil ditambah');</script>";
-
-      $_SESSION['emailPerush'] = $_POST['emailPerush'];
-
-      echo "<script>window.location='".base_url_perus()."';</script>";
-    }
+    echo "<script>alert('Data berhasil diedit');</script>";
+    echo "<script>window.location='".base_url_perus('profil')."';</script>";
   }
-
+  
 }

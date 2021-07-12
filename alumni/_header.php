@@ -49,7 +49,7 @@ $data = mysqli_fetch_assoc($sql_alumni);
             <a href="<?=base_url_alumni('profil')?>"><span class="fa fa-user mr-3"></span> Profil</a>
           </li>
           <li id="antrean">
-              <a href="<?=base_url_alumni('antrean')?>"><span class="fa fa-suitcase mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Antrean</a>
+              <a href="<?=base_url_alumni('antrean')?>"><span class="fa fa-suitcase mr-3 notif"></span> Antrean</a>
           </li>
           <li>
             <a href="<?=base_url_alumni('auth/logout.php')?>"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>

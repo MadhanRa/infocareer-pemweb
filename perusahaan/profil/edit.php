@@ -2,25 +2,11 @@
 include_once('../_header.php');
 
 $idPerush = $data['idPerush'];
-
-if (isset($_POST['edit'])) {
-  $namaCp = trim(mysqli_real_escape_string($con , $_POST['namaCp']));
-  $telpCp = trim(mysqli_real_escape_string($con , $_POST['telpCp']));
-  $produk = trim(mysqli_real_escape_string($con , $_POST['produk']));
-  $alamatPerush = trim(mysqli_real_escape_string($con , $_POST['alamatPerush']));
-  $telpFaxPerush = trim(mysqli_real_escape_string($con , $_POST['telpFaxPerush']));
-  $tentangPerush = trim(mysqli_real_escape_string($con , $_POST['tentangPerush']));
-
-  $query = "UPDATE `perusahaan` SET `produk`='$produk',`alamatPerush`='$alamatPerush',`telpFaxPerush`='$telpFaxPerush',`namaCp`='$namaCp',`telpCp`='$telpCp',`tentangPerush`='$tentangPerush' WHERE idPerush = $idPerush";
-
-  mysqli_query($con, $query) or die(mysqli_error($con));
-
-  echo "<script>alert('Data berhasil diedit');</script>";
-  echo "<script>window.location='".base_url('profil')."';</script>";
-}
 ?>
 <h1>Edit Profil</h1>
-<form action="" method="post" autocomplete="off">
+<form action="proses.php" method="post" enctype="multipart/form-data" autocomplete="off">
+    <input type="hidden" name="idPerush" value="<?= $idPerush ?>">
+    <input type="hidden" name="emailPerush" value="<?= $data['emailPerush'] ?>">
     <div class="form-row">
       <div class="col">
         <label for="namaCp">Nama Cp</label>
@@ -46,6 +32,10 @@ if (isset($_POST['edit'])) {
     <div class="form-group">
       <label for="tentangPerush">Tentang Perusahaan</label>
       <textarea name="tentangPerush" id="tentangPerush" rows="4" class="form-control" placeholder="Tentang Perusahaan" style="height: auto!important;" required><?= $data['tentangPerush'] ?></textarea>
+    </div>
+    <div class="form-group">
+      <label for="logo_perus">Logo Perusahaan</label>
+      <input type="file" id="logo_perus" name="logo_perus" class="form-control-file" >
     </div>
     <div class="form-group">
       <button type="submit" name="edit" id="registerButton" class="btn btn-primary-themed">Edit</button>

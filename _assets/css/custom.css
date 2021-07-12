@@ -76,6 +76,12 @@ nav#sidebar {
   color: white;
 }
 
+.card img {
+  height: 163px;
+  width: 163px;
+  object-fit: cover;
+}
+
 .card a:hover {
   background: #757575;
 }
@@ -119,4 +125,10 @@ nav#sidebar {
 input[type="text"].border-search::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   font-size: 12px;
+}
+
+.img-detail {
+  height: 280px;
+  width: 280px;
+  object-fit: cover;
 }
