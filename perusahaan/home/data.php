@@ -7,7 +7,7 @@ $sql_lowongan = mysqli_query($con, "SELECT l.id, l.judul, l.lowongan, l.batasLow
 
 if ( isset($_POST['search']) ) {
   $keyword = $_POST['keyword'];
-  $sql_lowongan = mysqli_query($con, "SELECT l.id, l.judul, l.lowongan, l.batasLowongan, l.range_salary, l.gambar_lowongan FROM perusahaan_lowongan AS l JOIN perusahaan AS p ON l.idPerush = p.idPerush WHERE hapus = 0 AND l.idPerush = $idPerush AND l.judul LIKE '%$keyword%' ORDER BY id DESC") or die (mysqli_error($con));
+  $sql_lowongan = mysqli_query($con, "SELECT l.id, l.judul, l.lowongan, l.batasLowongan, l.range_salary, l.deskripsi, l.gambar_lowongan FROM perusahaan_lowongan AS l JOIN perusahaan AS p ON l.idPerush = p.idPerush WHERE hapus = 0 AND l.idPerush = $idPerush AND l.judul LIKE '%$keyword%' ORDER BY id DESC") or die (mysqli_error($con));
 }
 
 ?>

@@ -2,7 +2,7 @@
 include_once('../_header.php'); 
 
 $id = @$_GET['id'];
-$sql_detail_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.idPerush, l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, l.range_salary, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
+$sql_detail_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.idPerush, l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, l.range_salary, l.gambar_lowongan, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
 FROM perusahaan_lowongan AS l 
 INNER JOIN perusahaan AS p ON l.idPerush = p.idPerush
 INNER JOIN perusahaan_lowongan_syarat ON p.idPerush = perusahaan_lowongan_syarat.idPerush AND l.idLowongan = perusahaan_lowongan_syarat.idLowongan
@@ -20,7 +20,7 @@ if (isset($_POST['delete'])) {
 
 <div class="row">
   <div class="col-md-auto">
-    <img src="<?= base_url_image('lowongan/placeholder_lowongan_big.png') ?>" alt="">
+    <img class="img-detail" src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>" alt="placeholder lowongan">
   </div>
   <div class="col">
     <h3><?= $data['judul'] ?></h3>

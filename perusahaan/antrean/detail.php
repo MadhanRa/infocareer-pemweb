@@ -5,20 +5,18 @@ $idPerush = $data['idPerush'];
 $id = @$_GET['id'];
 $sql_info_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.judul, l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
 FROM perusahaan_lowongan AS l
-INNER JOIN application AS a ON a.idPerush = l.idPerush AND a.idLowongan = l.idLowongan
-INNER JOIN perusahaan_lowongan_syarat AS ps ON a.idPerush = ps.idPerush AND a.idLowongan = ps.idLowongan
+INNER JOIN perusahaan_lowongan_syarat AS ps ON l.idPerush = ps.idPerush AND l.idLowongan = ps.idLowongan
 INNER JOIN syarat_lamar AS s ON ps.idSyarat = s.id 
-WHERE l.id = $id");
+WHERE l.id = $id") or die (mysqli_error($con));
 
 $detail_low = mysqli_fetch_assoc($sql_info_lowongan);
 $requirements = explode(";", $detail_low['requirements']);
 $idLowongan = $detail_low['idLowongan'];
 
-$sql_antrean= mysqli_query($con, "SELECT p.nama, a.idAPP, a.nim, a.idPerush, a.idLowongan, a.tgl_apply, a.confirm, a.accept, a.file_lampiran
-FROM application AS a
-INNER JOIN alumni AS p ON a.nim = p.nim
-INNER JOIN perusahaan_lowongan AS l ON a.idLowongan = l.idLowongan AND a.idPerush = l.idPerush
-WHERE a.idLowongan = $idLowongan AND a.idPerush = $idPerush ORDER BY a.idAPP DESC") or die(mysqli_error($con));
+$sql_antrean= mysqli_query($con, "SELECT `p`.`nama`, `a`.`idAPP`, `a`.`nim`, `a`.`idPerush`, `a`.`idLowongan`, `a`.`tgl_apply`, `a`.`confirm`, `a`.`accept`, `a`.`file_lampiran`
+FROM `alumni` AS `p` 
+	LEFT JOIN `application` AS `a` ON `a`.`nim` = `p`.`nim`
+WHERE `a`.`idLowongan` = '$idLowongan' AND `a`.`idPerush` = '$idPerush' ORDER BY `a`.`idAPP` DESC") or die(mysqli_error($con));
 
 
 ?>

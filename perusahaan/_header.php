@@ -133,6 +133,11 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
       /* Chrome/Opera/Safari */
       font-size: 12px;
     }
+    .img-detail {
+      height: 280px;
+      width: 280px;
+      object-fit: cover;
+    }
   </style>
   <body>
 		
