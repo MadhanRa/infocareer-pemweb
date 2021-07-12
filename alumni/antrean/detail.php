@@ -21,7 +21,7 @@ if (isset($_POST['delete'])) {
 <div class="row">
   <div class="col-md-auto">
     <!-- Logo Perusahaan -->
-    <img src="<?=base_url_image('lowongan/placeholder_lowongan_big.png')?>">
+    <img src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>">
   </div>
   <div class="col-sm">
     <!-- Judul Lowongan -->

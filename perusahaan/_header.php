@@ -144,6 +144,7 @@ $data = mysqli_fetch_assoc($sql_perusahaan);
         </div>
 	  		<div class="img bg-wrap text-center py-4";">
 	  			<div class="user-logo">
+            <div class="img" style="background-image: url(<?= base_url_image('perus_profile/'.$data['logo_perus']) ?>);"></div>
 	  				<h3><?= $data['namaPerush'] ?></h3>
 	  			</div>
 	  		</div>

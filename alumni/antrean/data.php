@@ -2,7 +2,7 @@
 include_once('../_header.php');
 
 $nim = $data['nim'];
-$sql_lowongan = mysqli_query($con, "SELECT a.idApp, l.judul, l.batasLowongan,  a.tgl_apply, a.confirm, a.accept, a.tgl_confirm, a.tgl_accept, p.namaPerush, p.idPerush 
+$sql_lowongan = mysqli_query($con, "SELECT a.idApp, l.judul, l.batasLowongan, l.gambar_lowongan,  a.tgl_apply, a.confirm, a.accept, a.tgl_confirm, a.tgl_accept, p.namaPerush, p.idPerush 
 FROM application AS a 
 INNER JOIN perusahaan_lowongan AS l ON a.idLowongan = l.idLowongan AND a.idPerush = l.idPerush 
 INNER JOIN perusahaan AS p ON a.idPerush = p.idPerush 
@@ -10,7 +10,7 @@ WHERE a.nim = $nim AND a.hapus = 0 ORDER BY a.idApp DESC") or die (mysqli_error(
 
 if ( isset($_POST['search']) ) {
   $keyword = $_POST['keyword'];
-  $sql_lowongan = mysqli_query($con, "SELECT a.idApp, l.judul, l.batasLowongan,  a.tgl_apply, a.confirm, a.accept, a.tgl_confirm, a.tgl_accept, p.namaPerush, p.idPerush 
+  $sql_lowongan = mysqli_query($con, "SELECT a.idApp, l.judul, l.batasLowongan, l.gambar_lowongan, a.tgl_apply, a.confirm, a.accept, a.tgl_confirm, a.tgl_accept, p.namaPerush, p.idPerush 
   FROM application AS a 
   INNER JOIN perusahaan_lowongan AS l ON a.idLowongan = l.idLowongan AND a.idPerush = l.idPerush 
   INNER JOIN perusahaan AS p ON a.idPerush = p.idPerush 
@@ -33,7 +33,7 @@ if ( isset($_POST['search']) ) {
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
         <div class="col-xl-auto">
-          <img src="<?= base_url_image('lowongan/placeholder_lowongan.png') ?>" alt="lowongan pleceholder">
+          <img src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>" alt="lowongan pleceholder">
         </div>
         <div class="col-xl">
           <h5 class="card-header text-center"><?= $data['namaPerush'] ?></h5>
