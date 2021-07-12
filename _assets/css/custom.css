@@ -1,3 +1,6 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
 .img-in {
   position: absolute;
   right: 180px;

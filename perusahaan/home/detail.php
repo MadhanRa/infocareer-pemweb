@@ -20,7 +20,7 @@ if (isset($_POST['delete'])) {
 
 <div class="row">
   <div class="col-md-auto">
-    <img src="<?= base_url('_assets/images/placeholder_lowongan_big.png') ?>" alt="">
+    <img src="<?= base_url_image('lowongan/placeholder_lowongan_big.png') ?>" alt="">
   </div>
   <div class="col">
     <h3><?= $data['judul'] ?></h3>

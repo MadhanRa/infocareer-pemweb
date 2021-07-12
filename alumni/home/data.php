@@ -11,7 +11,7 @@ if ( isset($_POST['search']) ) {
 ?>
 
 <h1>Daftar Lowongan</h1>
-<form action="" method="post" class="form-inline justify-content-center mt-5">
+<form action="" method="post" class="form-inline justify-content-center mt-5" autocomplete="off" >
     <input class="border-search mr-sm-2" type="text" placeholder="Cari Lowongan" aria-label="Search" name="keyword">
     <div class="input-group-append">
       <button type="submit" name="search" id="searchButton" class="btn-search"><i class="fa fa-search"></i></button>

@@ -2,23 +2,22 @@
 
 require_once "../_config/config.php";
 
-if (isset($_POST['daftar'])) {
-  $idLowongan = $_POST['idLowongan'];
-  $idPerush = $_POST['idPerush'];
-  $tanggal = date('Y-m-d H:i:s');
-  $nim = $_SESSION['nim'];
-  $sql_check_antrian = mysqli_query($con, "SELECT * FROM application WHERE idLowongan = $idLowongan AND idPerush = $idPerush AND nim = $nim") or die(mysqli_error($con));
+if (isset($_POST['add'])) {
+  $idPerush = trim(mysqli_real_escape_string($con , $_POST['idPerush']));
+  $newId = trim(mysqli_real_escape_string($con , $_POST['newId']));
+  $judul = trim(mysqli_real_escape_string($con , $_POST['judul']));
+  $jumlah_lowongan = trim(mysqli_real_escape_string($con , $_POST['lowongan']));
+  $deskripsi = trim(mysqli_real_escape_string($con , $_POST['deskripsi']));
+  $pesan = trim(mysqli_real_escape_string($con , $_POST['pesan']));
+  $batasLowongan = trim(mysqli_real_escape_string($con , $_POST['batasLowongan']));
+  $rangeSal = trim(mysqli_real_escape_string($con , $_POST['rangeSal']));
+  
+  $query = "INSERT INTO perusahaan_lowongan (`id`, `idPerush`, `idLowongan`, `tglMasuk`, `batasLowongan`, `judul`, `lowongan`, `deskripsi`, `hapus`, `pesan_ke_pelamar`, `dilihat`, `range_salary`) VALUES (NULL, '$idPerush', '$newId', CURRENT_DATE, '$batasLowongan', '$judul', '$jumlah_lowongan', '$deskripsi', 0, '$pesan', 0, '$rangeSal')";
+  mysqli_query($con, $query) or die(mysqli_error($con));
 
-  if(mysqli_num_rows($sql_check_antrian) > 0) {
-    echo "<script>
-    alert('Anda sudah mendaftar pada lowongan ini');
-    window.location='".base_url('home/detail.php?idLowongan='.$idLowongan.'&idPerush='.$idPerush)."';
-    </script>";
-  } else {
-    mysqli_query($con, "INSERT INTO application (nim, idPerush, idLowongan, tgl_apply, tgl_confirm, confirm, tgl_accept, accept) VALUES ($nim, $idPerush, $idLowongan, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 0)");
-    echo "<script>
-    alert('Terimakasih sudah mendaftar');
-    window.location='".base_url('antrean')."';
-    </script>";
+  foreach($_POST['syarat'] as $syarat) {
+    mysqli_query($con, "INSERT INTO perusahaan_lowongan_syarat (`idPerush`, `idLowongan`, `idSyarat`) VALUES ('$idPerush', $newId, '$syarat')");
   }
+  echo "<script>alert('Data berhasil ditambah');</script>";
+  echo "<script>window.location='".base_url_perus('home')."';</script>";
 }

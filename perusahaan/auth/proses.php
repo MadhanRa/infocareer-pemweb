@@ -36,7 +36,7 @@ function uploadPhoto($email) {
   $namaFileBaru .= $ekstensiGambar;
 
   // lolos pengecekan
-  move_uploaded_file($tmpName, base_url_image('perus_profile').$namaFileBaru);
+  move_uploaded_file($tmpName, '../../_assets/images/perus_profile/'.$namaFileBaru);
 
   return $namaFileBaru;
 }
@@ -62,7 +62,7 @@ if (isset($_POST['register'])) {
     if (!$photo) {
       echo "<script>alert('gagal upload gambar');</script>";
     } else {
-      $query = "INSERT INTO perusahaan (`idPerush`, `namaPerush`, `produk`, `alamatPerush`, `telpFaxPerush`, `emailPerush`, `namaCp`, `telpCp`, `regTime`, `tentangPerush`, `passwordPerush`, `flag`) VALUES (NULL, '$nama', '$produk', '$alamatPerush', '$telpFaxPerush', '$email', '$namaCp', '$telpCp', CURRENT_TIMESTAMP, '$tentangPerush', '$password', 1)";
+      $query = "INSERT INTO perusahaan (`idPerush`, `namaPerush`, `produk`, `alamatPerush`, `telpFaxPerush`, `emailPerush`, `namaCp`, `telpCp`, `regTime`, `tentangPerush`, `passwordPerush`, `flag`, `logo_perus`) VALUES (NULL, '$nama', '$produk', '$alamatPerush', '$telpFaxPerush', '$email', '$namaCp', '$telpCp', CURRENT_TIMESTAMP, '$tentangPerush', '$password', 1, '$photo')";
 
       mysqli_query($con, $query) or die(mysqli_error($con));
 

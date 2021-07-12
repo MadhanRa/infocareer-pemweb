@@ -80,7 +80,7 @@ if (isset($_SESSION['emailPerush'])) {
                       <textarea name="tentangPerush" id="tentangPerush" rows="5" class="form-input" placeholder="Tentang Perusahaan" required></textarea>
                     </div>
                     <div class="form-group">
-                      <label for="photo">Photo</label>
+                      <label for="photo">Logo Perusahaan</label>
                       <input type="file" id="photo" name="photo" class="form-input" >
                     </div>
                     <div class="form-group">
