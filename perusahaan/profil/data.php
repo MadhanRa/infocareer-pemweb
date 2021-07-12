@@ -17,7 +17,7 @@ include_once('../_header.php');
   </div>
 </div>
 
-<div class="my-4">
+<div class="my-5">
 <h5>Informasi Perusahaan</h5>
 <p>Produk : <?= $data['produk'] ?></p>
 <p>Nama CP : <?= $data['namaCp'] ?></p>
@@ -25,7 +25,6 @@ include_once('../_header.php');
 <p>Alamat : <?= $data['alamatPerush'] ?></p>
 <p>Telp/Fax : <?= $data['telpFaxPerush'] ?></p>
 <p>Email : <?= $data['emailPerush'] ?></p>
-
-
+</div>
 <a href="edit.php" class="btn btn-primary-themed">Edit Profil</a>
 <?php include_once('../_footer.php'); ?>
