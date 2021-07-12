@@ -3,7 +3,7 @@ include_once('../_header.php');
 
 $idApp = @$_GET['id'];
 
-$sql_detail_lowongan = mysqli_query($con, "SELECT l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, p.namaPerush, a.tgl_apply, a.tgl_confirm, a.confirm, a.tgl_accept, a.accept 
+$sql_detail_lowongan = mysqli_query($con, "SELECT l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, l.gambar_lowongan, p.namaPerush, a.tgl_apply, a.tgl_confirm, a.confirm, a.tgl_accept, a.accept 
 FROM application AS a
 INNER JOIN perusahaan AS p ON a.idPerush = p.idPerush
 INNER JOIN perusahaan_lowongan AS l ON a.idLowongan = l.idLowongan AND a.idPerush = l.idPerush
@@ -21,7 +21,7 @@ if (isset($_POST['delete'])) {
 <div class="row">
   <div class="col-md-auto">
     <!-- Logo Perusahaan -->
-    <img src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>">
+    <img class="img-detail" src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>">
   </div>
   <div class="col-sm">
     <!-- Judul Lowongan -->

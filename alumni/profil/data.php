@@ -11,7 +11,7 @@ include_once('../_header.php');
     <div class="text-center mar-top">
       <h4><?= $data['nama'] ?></h4>
       <p><?= $data['tentangAlumni'] ?></p>
-      <p><?= $data['email'] ?></p>
+      <p><i><?= $data['email'] ?></i></p>
     </div>
   </div>
 </div>
