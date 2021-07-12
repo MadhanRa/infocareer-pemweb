@@ -15,11 +15,11 @@ function uploadFile($new_name) {
   }
 
   // cek apakah yang diupload adalah file dengan ekstensi yang benar
-  $extensiValid = ['pdf', 'doc', 'docx'];
+  $extensiValid = ['pdf', 'doc', 'docx', 'zip'];
   $format = pathinfo($namaFile, PATHINFO_EXTENSION);
 
   if ( !in_array($format, $extensiValid) ) {
-    echo "<script>alert('Format file tidak sesuai. Hanya menerima pdf, doc, dan docx.');</script>";
+    echo "<script>alert('Format file tidak sesuai. Hanya menerima pdf, doc, docx, dan zip.');</script>";
     return false;
   }
 
