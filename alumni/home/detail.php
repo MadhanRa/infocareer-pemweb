@@ -138,24 +138,25 @@ $requirements = explode(";", $data['requirements']);
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <!-- Lampirkan persyaratan -->
-        <div class="container">
-          <form action="proses.php" method="post" enctype="multipart/form-data">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" name="file_lampiran" id="file_lampiran">
-              <label class="custom-file-label" for="customFile">Masukkan lampiran</label>
+      <form action="proses.php" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+          <!-- Lampirkan persyaratan -->
+          <div class="container">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="file_lampiran" id="file_lampiran">
+                <label class="custom-file-label" for="customFile">Masukkan lampiran</label>
+              </div>
+              <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
+              <input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
+              <input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
             </div>
-            <input type="hidden" name="nim" value="<?= $_SESSION['nim'] ?>" />
-            <input type="hidden" name="idLowongan" value="<?= $data['idLowongan'] ?>">
-            <input type="hidden" name="idPerush" value="<?= $data['idPerush'] ?>">
-          </form> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-modal-batal" data-dismiss="modal">Batal</button>
+            <button type="submit" name="daftar" class="btn btn-modal-kirim">Kirim</button>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-modal-batal" data-dismiss="modal">Batal</button>
-        <button type="submit" name="daftar" class="btn btn-modal-kirim">Kirim</button>
-      </div>
+      </form>
     </div>
   </div>
 </div>

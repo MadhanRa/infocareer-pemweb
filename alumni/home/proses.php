@@ -36,7 +36,7 @@ function uploadFile($new_name) {
   $namaFileBaru .= $ekstensiFile;
 
   // lolos pengecekan
-  move_uploaded_file($tmpName, base_url_image('alumni_profile').$namaFileBaru);
+  move_uploaded_file($tmpName, '../../_assets/files/' . $namaFileBaru);
 
   return $namaFileBaru;
 }
@@ -60,11 +60,13 @@ if (isset($_POST['daftar'])) {
     if (!$file_lampiran) {
       echo "<script>alert('gagal upload file');</script>";
     } else {
-      mysqli_query($con, "INSERT INTO application (nim, idPerush, idLowongan, tgl_apply, tgl_confirm, confirm, tgl_accept, accept, file_lampiran) VALUES ($nim, $idPerush, $idLowongan, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 0, $file_lampiran)");
+      $query_insert = "INSERT INTO application VALUES (NULL, '$nim', '$idPerush', '$idLowongan', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 0, 0, '$file_lampiran')";
+
+      mysqli_query($con, $query_insert) or die(mysqli_error($con));
 
       echo "<script>
       alert('Terimakasih sudah mendaftar');
-      window.location='".base_url('antrean')."';
+      window.location='".base_url_alumni('antrean')."';
       </script>";
 
     }

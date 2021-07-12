@@ -36,7 +36,7 @@ function uploadPhoto($nim) {
   $namaFileBaru .= $ekstensiGambar;
 
   // lolos pengecekan
-  move_uploaded_file($tmpName, base_url_image('alumni_profile').$namaFileBaru);
+  move_uploaded_file($tmpName, '../../_assets/images/alumni_profile/'.$namaFileBaru);
 
   return $namaFileBaru;
 }

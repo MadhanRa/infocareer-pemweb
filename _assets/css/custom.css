@@ -45,6 +45,8 @@ nav#sidebar {
 .biodata_profile {
   max-width: 800px;
 }
+
+/* Card di home dan antrean */
 .card-body h5 {
   font-size: 12px;
 }
@@ -56,6 +58,10 @@ nav#sidebar {
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 0.3rem;
+}
+
+.card p span {
+  font-size: 0.53rem;
 }
 
 .card a {
@@ -89,4 +95,25 @@ nav#sidebar {
 
 .col-md-4 {
   padding-right: 0;
+}
+
+/* Search Input di home dan antrean */
+.btn-search {
+  margin-left: -2.3rem;
+  background-color: transparent;
+  border: none;
+  color: #650984;
+}
+.border-search {
+  width: 280px;
+  height: 31px;
+  border: 2px solid #650984;
+  box-sizing: border-box;
+  border-radius: 15px;
+  outline: none;
+  padding: 0 10px;
+}
+input[type="text"].border-search::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 12px;
 }

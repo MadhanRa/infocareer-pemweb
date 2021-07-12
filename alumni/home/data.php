@@ -1,22 +1,3 @@
-<style>
-.btn-search{
-  width: 14.1px;
-  height: 13.55px;
-  margin-left: -2rem;
-}
-.border-search{
-  width: 280px;
-  height: 31px;
-  border: 2px solid #650984;
-  box-sizing: border-box;
-  border-radius: 15px;
-  outline: none;
-}
-.card-horizontal {
-  display: flex;
-  flex: 1 1 auto;
-}
-</style>
 <?php 
 include_once('../_header.php');
 
@@ -30,19 +11,14 @@ if ( isset($_POST['search']) ) {
 ?>
 
 <h1>Daftar Lowongan</h1>
-<!-- <form action="" method="post">
-  <input type="text" name="keyword" placeholder="Cari lowongan">
-  <button type="submit" name="search" id="searchButton">Cari</button>
-</form> -->
-<form class="form-inline justify-content-center">
-    <input class="border-search mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+<form action="" method="post" class="form-inline justify-content-center mt-5">
+    <input class="border-search mr-sm-2" type="text" placeholder="Cari Lowongan" aria-label="Search" name="keyword">
     <div class="input-group-append">
-      <img src="<?=base_url_image('search-icon.png')?>" class="btn-search" type ="submit">
+      <button type="submit" name="search" id="searchButton" class="btn-search"><i class="fa fa-search"></i></button>
     </div>
 </form>
 
-
-<div class="row mt-5">
+<div class="row mt-3">
   <?php while($data = mysqli_fetch_assoc($sql_lowongan)) {?>
   <div class="col-md-4">
     <div class="card mb-3" style="max-width: 540px;">
