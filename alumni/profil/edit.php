@@ -36,7 +36,7 @@ function uploadPhoto($nim) {
   $namaFileBaru .= $ekstensiGambar;
 
   // lolos pengecekan
-  move_uploaded_file($tmpName, '../_assets/images/'.$namaFileBaru);
+  move_uploaded_file($tmpName, '../../_assets/images/alumni_profile/'.$namaFileBaru);
 
   return $namaFileBaru;
 }
@@ -44,12 +44,11 @@ function uploadPhoto($nim) {
 if (isset($_POST['edit'])) {
   $alamat_skrg = trim(mysqli_real_escape_string($con , $_POST['alamat_skrg']));
   $hp_skrg = trim(mysqli_real_escape_string($con , $_POST['hp_skrg']));
-  $npwp = trim(mysqli_real_escape_string($con , $_POST['npwp']));
   $statusMarital = trim(mysqli_real_escape_string($con , $_POST['statusMarital']));
   $kompetensi = trim(mysqli_real_escape_string($con , $_POST['kompetensi']));
   $tentangAlumni = trim(mysqli_real_escape_string($con , $_POST['tentangAlumni']));
 
-  $photo = uploadPhoto($_POST['nim']);
+  $photo = uploadPhoto($nim);
 
   if (!$photo) {
     echo "<script>alert('gagal upload gambar');</script>";
