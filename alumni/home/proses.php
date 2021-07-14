@@ -1,7 +1,8 @@
 <?php
 require_once "../../_config/config.php";
 
-function uploadFile($new_name) {
+function uploadFile($new_name)
+{
 
   $namaFile = $_FILES['file_lampiran']['name'];
   $ukuranFile = $_FILES['file_lampiran']['size'];
@@ -9,7 +10,7 @@ function uploadFile($new_name) {
   $tmpName = $_FILES['file_lampiran']['tmp_name'];
 
   // apakah ada gambar yang diupload
-  if ( $error === 4) {
+  if ($error === 4) {
     echo "<script>alert('Anda belum memasukkan file');</script>";
     return false;
   }
@@ -18,7 +19,7 @@ function uploadFile($new_name) {
   $extensiValid = ['pdf', 'doc', 'docx', 'zip'];
   $format = pathinfo($namaFile, PATHINFO_EXTENSION);
 
-  if ( !in_array($format, $extensiValid) ) {
+  if (!in_array($format, $extensiValid)) {
     echo "<script>alert('Format file tidak sesuai. Hanya menerima pdf, doc, docx, dan zip.');</script>";
     return false;
   }
@@ -49,7 +50,7 @@ if (isset($_POST['daftar'])) {
 
   $sql_check_antrian = mysqli_query($con, "SELECT * FROM application WHERE idLowongan = $idLowongan AND idPerush = $idPerush AND nim = $nim") or die(mysqli_error($con));
 
-  if(mysqli_num_rows($sql_check_antrian) > 0) {
+  if (mysqli_num_rows($sql_check_antrian) > 0) {
     echo "<script>
     alert('Anda sudah mendaftar pada lowongan ini');
     </script>";
@@ -60,15 +61,14 @@ if (isset($_POST['daftar'])) {
     if (!$file_lampiran) {
       echo "<script>alert('gagal upload file');</script>";
     } else {
-      $query_insert = "INSERT INTO application VALUES (NULL, '$nim', '$idPerush', '$idLowongan', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 0, 0, '$file_lampiran')";
+      $query_insert = "INSERT INTO `application`(`idAPP`, `nim`, `idPerush`, `idLowongan`, `tgl_apply`, `tgl_confirm`, `confirm`, `tgl_accept`, `accept`, `dilihat`, `hapus`, `file_lampiran`) VALUES (NULL, '$nim', '$idPerush', '$idLowongan', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 0, 0, 0, '$file_lampiran')";
 
       mysqli_query($con, $query_insert) or die(mysqli_error($con));
 
       echo "<script>
       alert('Terimakasih sudah mendaftar');
-      window.location='".base_url_alumni('antrean')."';
+      window.location='" . base_url_alumni('antrean') . "';
       </script>";
-
     }
   }
 }
