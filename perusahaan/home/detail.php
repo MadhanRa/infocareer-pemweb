@@ -1,5 +1,5 @@
-<?php 
-include_once('../_header.php'); 
+<?php
+include_once('../_header.php');
 
 $id = @$_GET['id'];
 $sql_detail_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.idPerush, l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar, l.range_salary, l.gambar_lowongan, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
@@ -14,28 +14,28 @@ $requirements = explode(";", $data['requirements']);
 
 if (isset($_POST['delete'])) {
   mysqli_query($con, "UPDATE perusahaan_lowongan SET hapus=1 WHERE id='$id'");
-  echo "<script>window.location='".base_url_perus('home')."';</script>";
+  echo "<script>window.location='" . base_url_perus('home') . "';</script>";
 }
 ?>
 
 <div class="row">
   <div class="col-md-auto">
-    <img class="img-detail" src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>" alt="placeholder lowongan">
+    <img class="img-detail" src="<?= base_url_image('lowongan/' . $data['gambar_lowongan']) ?>" onerror="this.onerror=null;this.src='<?= base_url_image('lowongan/placeholder_lowongan_big.png') ?>'" alt="placeholder lowongan">
   </div>
   <div class="col">
     <h3><?= $data['judul'] ?></h3>
     <p>Tanggal Posting: <b><?= conv_date($data['tglMasuk']) ?></b></p>
     <p>Batas Lowongan: <b><?= conv_date($data['batasLowongan']) ?></b></p>
     <p>Dibutuhkan: <b><?= $data['lowongan'] ?> orang</b></p>
-    <p>Gaji: <b><?= $data['range_salary']?></b></p>
+    <p>Gaji: <b><?= $data['range_salary'] ?></b></p>
     <h5>Syarat-syarat</h5>
     <ul>
-    <?php 
-    foreach ($requirements as $syarat){?>
-    <li><?= $syarat ?></li>
-    <?php
-    }
-    ?>
+      <?php
+      foreach ($requirements as $syarat) { ?>
+        <li><?= $syarat ?></li>
+      <?php
+      }
+      ?>
     </ul>
   </div>
 </div>

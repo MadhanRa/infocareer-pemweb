@@ -1,5 +1,5 @@
-<?php 
-include_once('../_header.php'); 
+<?php
+include_once('../_header.php');
 
 $idApp = @$_GET['id'];
 
@@ -15,13 +15,13 @@ $data = mysqli_fetch_assoc($sql_detail_lowongan);
 
 if (isset($_POST['delete'])) {
   mysqli_query($con, "UPDATE application SET hapus=1 WHERE idAPP='$idApp'");
-  echo "<script>window.location='".base_url_alumni('antrean')."';</script>";
+  echo "<script>window.location='" . base_url_alumni('antrean') . "';</script>";
 }
 ?>
 <div class="row">
   <div class="col-md-auto">
     <!-- Logo Perusahaan -->
-    <img class="img-detail" src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>">
+    <img class="img-detail" src="<?= base_url_image('lowongan/' . $data['gambar_lowongan']) ?>" onerror="this.onerror=null;this.src='<?= base_url_image('lowongan/placeholder_lowongan_big.png') ?>'">
   </div>
   <div class="col-sm">
     <!-- Judul Lowongan -->
@@ -41,9 +41,9 @@ if (isset($_POST['delete'])) {
     <h5>Status Pendaftar</h5>
     <p>Tanggal mendaftar <?= conv_date($data['tgl_apply']) ?> </p>
     <h6>Status Konfirmasi</h6>
-    <p><span class="badge badge-pill <?= $data['confirm'] == 0 ? "badge-secondary" : "badge-success"?>"><?= $data['confirm'] == 0 ? "Menunggu Konfirmasi" : "Telah Dikonfirmasi sejak ".conv_date($data['tgl_confirm']) ?></span></p>
+    <p><span class="badge badge-pill <?= $data['confirm'] == 0 ? "badge-secondary" : "badge-success" ?>"><?= $data['confirm'] == 0 ? "Menunggu Konfirmasi" : "Telah Dikonfirmasi sejak " . conv_date($data['tgl_confirm']) ?></span></p>
     <h6>Status Terima</h6>
-    <p><span class="badge badge-pill <?= $data['accept'] == 0 ? "badge-secondary" : "badge-success"?>"><?= $data['accept'] == 0 ? "Belum diterima" : "Diterima sejak ".conv_date($data['tgl_accept']) ?></span></p>
+    <p><span class="badge badge-pill <?= $data['accept'] == 0 ? "badge-secondary" : "badge-success" ?>"><?= $data['accept'] == 0 ? "Belum diterima" : "Diterima sejak " . conv_date($data['tgl_accept']) ?></span></p>
   </div>
 </div>
 

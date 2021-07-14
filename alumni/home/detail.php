@@ -1,55 +1,59 @@
 <style>
-.body{
- background:  #E5E5E5;
-}
-.judul-modal{
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
-  color: #7F05A8;
-}
-.btn-lamar{
-  width: 216px;
-  height: 35px;
-  font-family: Montserrat;
-  font-style: normal !important;
-  font-weight: bold !important;
-  color: #E5E5E5 !important;
-  line-height: 17px !important;
-  background-color: #7F05A8 !important;
-  border-radius: 15px !important;
-}
-.btn-modal-batal{
-  width: 100px;
-  height: 22px;
-  font-family: Montserrat;
-  font-style: normal !important;
-  font-weight: bold !important;
-  line-height: 3px !important;
-  text-align: center !important;
-  color: #7F05A8 !important;
-  background-color: #FFFFFF !important;
-  border: 1px solid #7F05A8 !important;
-  box-sizing: border-box !important;
-  border-radius: 15px !important;
-}
-.btn-modal-kirim{
-  width: 100px;
-  height: 22px;
-  font-family: Montserrat;
-  font-style: normal !important;
-  font-weight: bold !important;
-  line-height: 3px !important;
-  text-align: center !important;
-  color: #E5E5E5 !important;
-  background-color: #7F05A8 !important;
-  border-radius: 15px !important;
-}
+  .body {
+    background: #E5E5E5;
+  }
+
+  .judul-modal {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #7F05A8;
+  }
+
+  .btn-lamar {
+    width: 216px;
+    height: 35px;
+    font-family: Montserrat;
+    font-style: normal !important;
+    font-weight: bold !important;
+    color: #E5E5E5 !important;
+    line-height: 17px !important;
+    background-color: #7F05A8 !important;
+    border-radius: 15px !important;
+  }
+
+  .btn-modal-batal {
+    width: 100px;
+    height: 22px;
+    font-family: Montserrat;
+    font-style: normal !important;
+    font-weight: bold !important;
+    line-height: 3px !important;
+    text-align: center !important;
+    color: #7F05A8 !important;
+    background-color: #FFFFFF !important;
+    border: 1px solid #7F05A8 !important;
+    box-sizing: border-box !important;
+    border-radius: 15px !important;
+  }
+
+  .btn-modal-kirim {
+    width: 100px;
+    height: 22px;
+    font-family: Montserrat;
+    font-style: normal !important;
+    font-weight: bold !important;
+    line-height: 3px !important;
+    text-align: center !important;
+    color: #E5E5E5 !important;
+    background-color: #7F05A8 !important;
+    border-radius: 15px !important;
+  }
 </style>
-<?php 
-include_once('../_header.php'); 
+<?php
+include_once('../_header.php');
 
 $id = @$_GET['id'];
 $sql_detail_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.idPerush, l.judul, l.tglMasuk, l.batasLowongan, l.lowongan, l.deskripsi, l.pesan_ke_pelamar,  l.range_salary, l.gambar_lowongan, p.namaPerush, p.alamatPerush, p.tentangPerush, p.emailPerush, p.telpFaxPerush, p.telpCp, p.namaCp, GROUP_CONCAT(s.syarat SEPARATOR ';') as 'requirements'
@@ -63,32 +67,32 @@ $data = mysqli_fetch_assoc($sql_detail_lowongan);
 $requirements = explode(";", $data['requirements']);
 ?>
 <div class="row">
-    <div class="col-md-auto">
-      <!-- Logo Perusahaan -->
-      <img class="img-detail" src="<?= base_url_image('lowongan/'.$data['gambar_lowongan']) ?>" alt="placeholder lowongan">
+  <div class="col-md-auto">
+    <!-- Logo Perusahaan -->
+    <img class="img-detail" src="<?= base_url_image('lowongan/' . $data['gambar_lowongan']) ?>" onerror="this.onerror=null;this.src='<?= base_url_image('lowongan/placeholder_lowongan_big.png') ?>'" alt="placeholder lowongan">
+  </div>
+  <div class="col-sm">
+    <!-- Judul Lowongan -->
+    <h3><?= $data['judul'] ?></h3>
+    <h6><?= $data['namaPerush'] ?></h6>
+    <!-- Info Lowongan -->
+    <div class="m-text">
+      <p>Dibutuhkan <?= $data['lowongan'] ?> orang</p>
+      <p>Dibuka sejak <b><?= conv_date($data['tglMasuk']) ?></b></p>
+      <p>Batas Lowongan <b><?= conv_date($data['batasLowongan']) ?></b></p>
+      <p>Gaji <b><?= $data['range_salary'] ?></b></p>
     </div>
-    <div class="col-sm">
-      <!-- Judul Lowongan -->
-      <h3><?= $data['judul'] ?></h3>
-      <h6><?= $data['namaPerush'] ?></h6>
-      <!-- Info Lowongan -->
-      <div class="m-text">
-        <p>Dibutuhkan <?= $data['lowongan'] ?> orang</p>
-        <p>Dibuka sejak <b><?= conv_date($data['tglMasuk']) ?></b></p>
-        <p>Batas Lowongan <b><?= conv_date($data['batasLowongan']) ?></b></p>
-        <p>Gaji <b><?= $data['range_salary'] ?></b></p>
-      </div>
-      <!-- Syarat Lowongan -->
-        <h5>Syarat-syarat</h5>
-        <ul>
-          <?php 
-          foreach ($requirements as $syarat){?>
-          <li><?= $syarat ?></li>
-          <?php
-          }
-          ?>
-        </ul>
-    </div>
+    <!-- Syarat Lowongan -->
+    <h5>Syarat-syarat</h5>
+    <ul>
+      <?php
+      foreach ($requirements as $syarat) { ?>
+        <li><?= $syarat ?></li>
+      <?php
+      }
+      ?>
+    </ul>
+  </div>
 </div>
 
 <h5 class="mt-3">Deskripsi</h5>
