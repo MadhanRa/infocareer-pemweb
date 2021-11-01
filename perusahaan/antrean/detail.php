@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('../_header.php');
 
 $idPerush = $data['idPerush'];
@@ -7,13 +7,13 @@ $sql_info_lowongan = mysqli_query($con, "SELECT l.idLowongan, l.judul, l.judul, 
 FROM perusahaan_lowongan AS l
 INNER JOIN perusahaan_lowongan_syarat AS ps ON l.idPerush = ps.idPerush AND l.idLowongan = ps.idLowongan
 INNER JOIN syarat_lamar AS s ON ps.idSyarat = s.id 
-WHERE l.id = $id") or die (mysqli_error($con));
+WHERE l.id = $id") or die(mysqli_error($con));
 
 $detail_low = mysqli_fetch_assoc($sql_info_lowongan);
 $requirements = explode(";", $detail_low['requirements']);
 $idLowongan = $detail_low['idLowongan'];
 
-$sql_antrean= mysqli_query($con, "SELECT `p`.`nama`, `a`.`idAPP`, `a`.`nim`, `a`.`idPerush`, `a`.`idLowongan`, `a`.`tgl_apply`, `a`.`confirm`, `a`.`accept`, `a`.`file_lampiran`
+$sql_antrean = mysqli_query($con, "SELECT `p`.`nama`, `a`.`idAPP`, `a`.`nim`, `a`.`idPerush`, `a`.`idLowongan`, `a`.`tgl_apply`, `a`.`confirm`, `a`.`accept`, `a`.`file_lampiran`
 FROM `alumni` AS `p` 
 	LEFT JOIN `application` AS `a` ON `a`.`nim` = `p`.`nim`
 WHERE `a`.`idLowongan` = '$idLowongan' AND `a`.`idPerush` = '$idPerush' ORDER BY `a`.`idAPP` DESC") or die(mysqli_error($con));
@@ -42,12 +42,12 @@ WHERE `a`.`idLowongan` = '$idLowongan' AND `a`.`idPerush` = '$idPerush' ORDER BY
       <div class="mx-3">
         <h5>Syarat-syarat</h5>
         <ul>
-        <?php 
-        foreach ($requirements as $syarat){?>
-        <li><?= $syarat ?></li>
-        <?php
-        }
-        ?>
+          <?php
+          foreach ($requirements as $syarat) { ?>
+            <li><?= $syarat ?></li>
+          <?php
+          }
+          ?>
         </ul>
       </div>
     </div>
@@ -66,30 +66,25 @@ WHERE `a`.`idLowongan` = '$idLowongan' AND `a`.`idPerush` = '$idPerush' ORDER BY
       </tr>
     </thead>
     <tbody>
-      <?php 
+      <?php
       $i = 1;
-      while($data = mysqli_fetch_assoc($sql_antrean)):
+      while ($data = mysqli_fetch_assoc($sql_antrean)) :
       ?>
-      <tr>
-        <th scope="row"><?= $i++ ?></th>
-        <td><?= $data['nama'] ?></td>
-        <td><?= conv_date($data['tgl_apply']) ?></td>
-        <td><a href="download.php?file=<?= $data['file_lampiran'] ?>">Download</a></td>
-        <td>
-          <form action="proses.php" method="post">
-            <input type="hidden" name="idAPP" value="<?= $data['idAPP'] ?>">
-            <button type="submit" name="confirm" id="confirmButton" class="btn <?= ($data['confirm']== 0)? "btn-secondary": "btn-primary"?>" <?= ($data['confirm']== 0)? '': 'disabled' ?>>Konfirmasi</button>
-            <button 
-              type="submit" 
-              name="accept" 
-              id="acceptButton"
-              class="btn <?= ($data['confirm']== 0)? "btn-secondary": "btn-primary"?>" 
-              <?= ($data['confirm']==0 OR $data['accept']==1)? 'disabled': '' ?>>
-              Terima
-            </button> 
-          </form>
-        </td>
-      </tr>
+        <tr>
+          <th scope="row"><?= $i++ ?></th>
+          <td><?= $data['nama'] ?></td>
+          <td><?= conv_date($data['tgl_apply']) ?></td>
+          <td><a href="download.php?file=<?= $data['file_lampiran'] ?>">Download</a></td>
+          <td>
+            <form action="proses.php" method="post">
+              <input type="hidden" name="idAPP" value="<?= $data['idAPP'] ?>">
+              <button type="submit" name="confirm" id="confirmButton" class="btn <?= ($data['confirm'] == 0) ? "btn-secondary" : "btn-primary" ?>" <?= ($data['confirm'] == 0) ? '' : 'disabled' ?>>Konfirmasi</button>
+              <button type="submit" name="accept" id="acceptButton" class="btn <?= ($data['confirm'] == 0) ? "btn-secondary" : "btn-primary" ?>" <?= ($data['confirm'] == 0 or $data['accept'] == 1) ? 'disabled' : '' ?>>
+                Terima
+              </button>
+            </form>
+          </td>
+        </tr>
       <?php endwhile; ?>
     </tbody>
   </table>
